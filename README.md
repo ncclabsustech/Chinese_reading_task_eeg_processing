@@ -124,8 +124,7 @@ Here we have a detailed record of our processing of each eeg data
 | subject | session | bad channels    | bad ICA components | bad segment ratio |
 | ------- | ------- | --------------- | ------------------ | ----------------- |
 | 06      | 1       | 17, 25, 48, 119 | 000, 004, 006      | 15%               |
-|         |         |                 |                    |                   |
-|         |         |                 |                    |                   |
+
 
 ### Standard
 
