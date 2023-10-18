@@ -8,7 +8,7 @@ This document illustrate the pipeline of our EEG pre-processing and how to use o
 
 Our EEG recording and pre-processing pipeline is as follows:
 
-![image-20231018112149262](C:\Users\HUAWEI\AppData\Roaming\Typora\typora-user-images\image-20231018112149262.png)
+![]()
 
  ## Code
 
