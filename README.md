@@ -8,7 +8,7 @@ This document illustrate the pipeline of our EEG pre-processing and how to use o
 
 Our EEG recording and pre-processing pipeline is as follows:
 
-![](pipeline.png)
+![](image/pipeline.png)
 
  ## Code
 
@@ -68,7 +68,7 @@ Our dataset consists of three main parts. The first part is the raw EEG data. Th
 
 The data is formatted under the requirement of the BIDS standard format. The detailed format of our data structure is shown as follows:
 
-![](structure.png)
+![](image/structure_new.png)
 
 Here is a summary of the main components of this dataset and the significance of related files. files named as "sub-xx" in the root directory contains the raw eeg data and the eyetracking data, while "sub-xx" in the derivative/preprocessed directory contains the pre-processed data. Here we will have a detailed explanation of the pre-processed data in the derivative/processed directory:
 
@@ -146,5 +146,24 @@ Criteria for bad segment selection：
 - Electrode looseness or detachment: Decreased signal quality due to electrodes detaching from the scalp, for example, significant changes in signal amplitude or sudden abnormal high or low impedance.
 
  
+ ICA (Independent Component Analysis) screening criteria:
+
+Typical features include:
+
+1. Eye artifacts
+
+   ![](image/eye_artifact.jpg)
+
+   2.Muscle artifacts
+
+   ![](image/muscle_artifact.jpg)
+
+  3.Channel noise
+
+   ![](image/channel_artifact.jpg)
+
+  4.Cardiac activity
+
+   ![](image/cardiac_artifact.jpg)
 
 
