@@ -8,7 +8,7 @@ This document illustrate the pipeline of our EEG pre-processing and how to use o
 
 Our EEG recording and pre-processing pipeline is as follows:
 
-![]()
+![](pipeline.png)
 
  ## Code
 
