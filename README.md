@@ -68,7 +68,7 @@ Our dataset consists of three main parts. The first part is the raw EEG data. Th
 
 The data is formatted under the requirement of the BIDS standard format. The detailed format of our data structure is shown as follows:
 
-![image-20231018123730416](C:\Users\HUAWEI\AppData\Roaming\Typora\typora-user-images\image-20231018123730416.png)
+![](structure.png)
 
 Here is a summary of the main components of this dataset and the significance of related files. files named as "sub-xx" in the root directory contains the raw eeg data and the eyetracking data, while "sub-xx" in the derivative/preprocessed directory contains the pre-processed data. Here we will have a detailed explanation of the pre-processed data in the derivative/processed directory:
 
@@ -147,22 +147,4 @@ Criteria for bad segment selection：
 
  
 
-ICA (Independent Component Analysis) screening criteria:
 
-Typical features include:
-
-1. Eye artifacts
-
-   ![image-20231017220723527](C:\Users\HUAWEI\AppData\Roaming\Typora\typora-user-images\image-20231017220723527.png)
-
-   2.Muscle artifacts
-
-![image-20231017220801203](C:\Users\HUAWEI\AppData\Roaming\Typora\typora-user-images\image-20231017220801203.png)
-
-  3.Channel noise
-
-![image-20231017220851113](C:\Users\HUAWEI\AppData\Roaming\Typora\typora-user-images\image-20231017220851113.png)
-
-  4.Cardiac activity
-
-![image-20231017220918610](C:\Users\HUAWEI\AppData\Roaming\Typora\typora-user-images\image-20231017220918610.png)
