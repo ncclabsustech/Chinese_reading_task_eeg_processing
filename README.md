@@ -119,7 +119,7 @@ our derivative data is pre-processed under these settings of the parameters:
 
 ### Processing Record 
 
-Here we have a detailed record of our processing of each eeg data
+Here we have a detailed record of our processing of each eeg data **(just an example now !!!)**
 
 | subject | session | bad channels    | bad ICA components | bad segment ratio |
 | ------- | ------- | --------------- | ------------------ | ----------------- |
