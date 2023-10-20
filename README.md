@@ -2,6 +2,10 @@
 
 This document illustrate the pipeline of our EEG pre-processing and how to use our code to deal with the EEG data. Besides, an explanation of our dataset is provided for your reference.
 
+For now, we have already recorded EEG data of 10 subjects, each data contains a nearly 12 hours long time. 
+
+We upload a folder called `example-dataset`, which shows the structure of our dataset, which follows the BIDS standard format.
+
 ##  Pipeline
 
 ### Experiment and EEG Recording
@@ -62,9 +66,9 @@ Make sure that the `mne-qt-browser`  is installed, otherwise you can not using t
 
 ### Code Usage
 
-In the code `preprocessing.py`, you can change the given parameters to pre-process the data with your own setting. 
+In the code `preprocessing.py`, you can change the given parameters to pre-process the data with your own setting and **save the raw data and the pre-processed data in BIDS format**.
 
-This code will first cut the eeg data. A short time will be remained before the start of the valid EEG segment. You can assign the time using the parameter `remaining_time_at_beginning`. After cutting, the code will run the main pre-processing pipeline. 
+This code will first cut the eeg data. A short time will be remained before the start of the valid EEG segment. You can assign the time using the parameter `remaining_time_at_beginning`. After cutting, the code will run the main pre-processing pipeline. In the whole pre-processing procedure, there GUI stages will appear. The first one shows all the ICA component sources. You can exclude ones you want to drop by clicking the components. The second one shows the band pass filtered data. In this stage, you can select bad channels by clicking the channel as in the first stage. You can also mask possible bad segments of the data by annotating them with label 'bad'. The last stage will show the data after re-reference, which is the last step of the pre-processing. In this stage, you can inspect whether the pre-processed data meets your need.
 
 The detailed information about the parameters are shown below:
 
