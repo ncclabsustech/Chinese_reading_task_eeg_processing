@@ -35,7 +35,7 @@ def convert_to_bids(raw, ica_component=None, ica_dict=None, bad_channel_dict=Non
     :param description: The description after the 'desc-' when naming files. e.g. When naming the pre-processed data
            assign this value as 'preproc'
     :param bids_root: The root of your dataset
-    :param raw_extension: The format you want to save for your EEG data. Some supported formats are '.fif', '.vhdr', '.edf'
+    :param raw_extension: The format you want to save for your EEG data. Some supported formats are '.fif', '.vhdr', '.edf', '.set'
     :param dataset_name: The name of the dataset, which will be saved in the dataset_description.json
     :param dataset_type: The type of the dataset, can be 'raw' or 'derivative', which will be saved in the dataset_description.json
     :param author: The author of the dataset, which will be saved in the dataset_description.json
@@ -65,7 +65,15 @@ def convert_to_bids(raw, ica_component=None, ica_dict=None, bad_channel_dict=Non
         os.makedirs(new_eeg_folder_path)
 
     # save raw data
-    raw.save(new_eeg_path, overwrite=True)
+    if raw_extension == '.fif':
+        raw.save(new_eeg_path, overwrite=True)
+    elif raw_extension == '.edf':
+        mne.export.export_raw(new_eeg_path, raw, fmt='edf', overwrite=True)
+    elif raw_extension == '.vhdr':
+        mne.export.export_raw(new_eeg_path, raw, fmt='brainvision', overwrite=True)
+    elif raw_extension == '.set':
+        mne.export.export_raw(new_eeg_path, raw, fmt='eeglab', overwrite=True)
+
 
     # save ICA components
     if ica_component is not None:
