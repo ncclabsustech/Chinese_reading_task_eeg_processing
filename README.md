@@ -2,13 +2,43 @@
 
 This document illustrate the pipeline of our EEG pre-processing and how to use our code to deal with the EEG data. Besides, an explanation of our dataset is provided for your reference.
 
-## EEG Pre-processing Pipeline
+##  Pipeline
 
-## Pipeline
+### Experiment and EEG Recording
 
 Our EEG recording and pre-processing pipeline is as follows:
 
 ![](image/pipeline.png)
+
+### Data Processing
+
+![](image/data_processing.png)
+
+Here, we pre-process our data to remove obvious artifact to the least extent. Our processing procedure includes these steps:
+
+#### Data Segmentation
+
+We will remain a short time period before and after the valid time range. We will locate the cutting position by referencing the EEG mark. Detailed information can be seen in the method `cut_single_eeg` in `preprocessing.py`. In our procedure, we set the remaining time before the valid range to 10s.
+
+#### Resample and Notch filter
+
+Before we do ICA, we will first follow some basic steps, including down-sampling the data and filter the line frequency. In our setting, we assign the resample frequency to 256 Hz and line frequency to 50 Hz.
+
+####  ICA
+
+We use ICA to remove ocular artifact, cardial artifact, muscle movement artifact and other possible artifact. In our own processing, we set the parameter  `n_component` to 15 to make sure we can find all possible artifact. We use `infomax` algorithm. You can change these parameters on your own. Details about how to change parameters will be explained in the Code part.
+
+#### Filtering
+
+We will filter the data using a band pass filter to remove artifact. In our processing, we set the pass band to 0.1-80 Hz
+
+#### Bad Channel Interpolation and Bad Segment Mask
+
+Then we will  interpolate the bad channel using method implemented in the `MNE` package. We will also mark segments which look like a bad segment with label 'bad' for reference. This can be done in GUI, which we will explain later.
+
+#### Re-reference
+
+Lastly, we will re-reference our data. In our implementation, we use the 'average' method.
 
  ## Code
 
@@ -41,7 +71,16 @@ The detailed information about the parameters are shown below:
 | Parameter                   | type  | Explanation                                                  |
 | --------------------------- | ----- | ------------------------------------------------------------ |
 | eeg_path                    | str   | data path of the unprocessed eeg                             |
-| save_eeg_path               | str   | path for saving your eeg                                     |
+| sub_id                      | str   | a string of the id of the subject. Pad 0 if the id has only one digit. |
+| ses                         | str   | a string describing the session of the current data. It will be contained in the file name when saving the file. |
+| task                        | str   | a string describing the task of the current data. It will be contained in the file name when saving the file. |
+| run                         | int   | an integer standing for the run number of the data.          |
+| raw_data_root               | str   | the path of your raw data, which is also the root of the whole dataset. |
+| processed_data_root         | str   | the path of your pre-processed data.                         |
+| raw_extension               | str   | the file extension when saving the data, can be '.fif', '.edf', '.set' |
+| dataset_name                | str   | name of the dataset, which will be saved in the dataset_description.json. |
+| author                      | str   | author of the dataset.                                       |
+| line_freq                   | float | line frequency of the data. This is needed when saving the data into BIDS format.                   Default to be 50. |
 | start_chapter               | str   | a string which is the eeg mark of the first chapter in current eeg data. e.g. if your eeg starts with chapter 1, then the argument should be 'CH01'. |
 | low_pass_freq               | float | the low pass frequency of the filter                         |
 | high_pass_freq              | float | the high pass frequency of the filter                        |
@@ -144,7 +183,7 @@ Criteria for bad segment selection：
 
 - Electrode looseness or detachment: Decreased signal quality due to electrodes detaching from the scalp, for example, significant changes in signal amplitude or sudden abnormal high or low impedance.
 
- 
+
  ICA (Independent Component Analysis) screening criteria:
 
 Typical features include:
@@ -164,5 +203,4 @@ Typical features include:
   4.Cardiac activity
 
    ![](image/cardiac_artifact.jpg)
-
 
