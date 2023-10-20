@@ -33,7 +33,19 @@ def process_single_eeg(eeg_path=None, sub_id='06', ses='LittlePrince',
                        ica_method='infomax', ica_n_components=15, rereference='average'):
     '''
     :param eeg_path: data path of the unprocessed eeg.
-    :param save_eeg_path: path for saving your eeg.
+    :param sub_id: a string of the id of the subject. Pad 0 if the id has only one digit.
+    :param ses: a string describing the session of the current data. It will be contained in the file name when saving
+                the file.
+    :param task: a string describing the task of the current data. It will be contained in the file name when saving
+                the file.
+    :param run: an integer standing for the run number of the data.
+    :param raw_data_root: the path of your raw data, which is also the root of the whole dataset.
+    :param processed_data_root: the path of your pre-processed data.
+    :param raw_extension: the file extension when saving the data, can be '.fif'
+    :param dataset_name: name of the dataset, which will be saved in the dataset_description.json.
+    :param author: author of the dataset.
+    :param line_freq: line frequency of the data. This is needed when saving the data into BIDS format.
+                      Default to be 50.
     :param start_chapter: a string which is the eeg mark of the first chapter in current eeg data
                           e.g. if your eeg starts with chapter 1, then the argument should be 'CH01'.
     :param low_pass_freq: the low pass frequency of the filter.
@@ -90,10 +102,6 @@ def process_single_eeg(eeg_path=None, sub_id='06', ses='LittlePrince',
     ica_components = ica_components.get_data()
 
 
-
-    print(type(ica_components))
-    print(ica_components)
-
     ica.plot_sources(raw, show_scrollbars=False, block=True)
 
     print('exclude ICA components: ', ica.exclude)
@@ -141,10 +149,10 @@ def process_single_eeg(eeg_path=None, sub_id='06', ses='LittlePrince',
 
 
 parser = argparse.ArgumentParser(description='Parameters that can be changed in this experiment')
-parser.add_argument('--eeg_path', type=str, default='subject_05\\eegdata\\subject_05_trial_01_eeg.set')
-parser.add_argument('--sub_id', type=str, default='05')
-parser.add_argument('--ses', type=str, default='LittlePrince')
-parser.add_argument('--task', type=str, default='LittlePrince')
+parser.add_argument('--eeg_path', type=str, default='subject_07\\LittlePrince\\eegdata\\subject_07_eeg_01.set')
+parser.add_argument('--sub_id', type=str, default='07')
+parser.add_argument('--ses', type=str, default='G')
+parser.add_argument('--task', type=str, default='G')
 parser.add_argument('--run', type=int, default=1)
 parser.add_argument('--raw_data_root', type=str, default='dataset')
 parser.add_argument('--processed_data_root', type=str, default='dataset/derivative')
