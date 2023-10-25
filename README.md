@@ -1,10 +1,13 @@
 # EEG Processing Document
 
-This document illustrate the pipeline of our EEG pre-processing and how to use our code to deal with the EEG data. Besides, an explanation of our dataset is provided for your reference.
+This document illustrates the pipeline of our EEG pre-processing and how to use our code to deal with the EEG data. Besides, an explanation of our dataset is provided for your reference.
 
 For now, we have already recorded EEG data of 10 subjects, each data contains a nearly 12 hours long time. 
 
 We upload a folder called `example-dataset`, which shows the structure of our dataset, which follows the BIDS standard format.
+
+本项目受到天桥脑科学研究院MindX数据支持计划的部分资助（共计伍万元）。
+其余资助来源:澳门科学技术发展基金项目(FDCT)
 
 ##  Pipeline
 
