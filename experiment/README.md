@@ -72,7 +72,7 @@ If you have already succesfully done that, you can run `PlayNovel.py` to start t
 
 `PlayNovel.py` is used to run the main experiment based on Psychopy. 
 
-
+![](image/screen.png)
 
 The program includes multiple modes, allowing you to choose whether to connect to the EGI and eye tracker for the experiment. The experimental procedure mainly consists of eye tracker calibration (if the eye tracker mode is selected), practice reading, formal reading, and breaks between chapters. During the reading process, the novel will be presented on the screen with three lines per page, and each line will not exceed ten Chinese characters (excluding punctuation marks). On each page, the middle line will be highlighted as the focal point, while the upper and lower lines will be displayed with reduced intensity as the background. Each character in the middle line will be sequentially highlighted for a certain duration, and participants will be asked to follow the highlighted cues to read the novel content. Various parameters, such as individual character highlight duration, highlight color, etc., can be adjusted by modifying the corresponding settings. 
 
@@ -137,7 +137,7 @@ x_{\text{eyetracker}} = (\frac{{W \cdot x_{\text{psychopy}}}}{{d \cdot r \cdot \
 y_{\text{eyetracker}} = (1 - \frac{{H \cdot y_{\text{psychopy}}}}{{d \cdot \tan(\text{height\_degree/2})}} )\cdot \frac{1}{2}
 ```
 
-where :
+where:
 ```math
 (x_{eyetracker}, y_{eyetracker}) \ is \ the \ coordinate \ in \ the \ eyetracker\ coordinate \ system
 ```
