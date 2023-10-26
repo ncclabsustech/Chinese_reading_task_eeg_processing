@@ -140,8 +140,12 @@ w here :
 ```math
 (x_{eyetracker}, y_{eyetracker}) \ is \ the \ coordinate \ in \ the \ eyetracker\ coordinate \ system
 \\
+
+
 (x_{psychopy}, y_{psychopy}) \ is \ the \ coordinate \ in \ the \ psychopy\ coordinate \ system
 \\
+
+
 W \ : \ the \ width \ of \ the \ screen,\
 H \ : \ the \ height \ of \ the \ screen,\
 r \ : \ the \ ratio \ of \ the \ width \ to \ the \ height
