@@ -139,19 +139,23 @@ y_{\text{eyetracker}} = (1 - \frac{{H \cdot y_{\text{psychopy}}}}{{d \cdot \tan(
 w here :
 ```math
 (x_{eyetracker}, y_{eyetracker}) \ is \ the \ coordinate \ in \ the \ eyetracker\ coordinate \ system
-\\
-
-
+```
+```math
 (x_{psychopy}, y_{psychopy}) \ is \ the \ coordinate \ in \ the \ psychopy\ coordinate \ system
-\\
-
-
+```
+```math
 W \ : \ the \ width \ of \ the \ screen,\
+```
+```math
 H \ : \ the \ height \ of \ the \ screen,\
+```
+```math
 r \ : \ the \ ratio \ of \ the \ width \ to \ the \ height
-\\
+```
+```math
 width\_degree \ : \ the\ horizontal\ scanning\ range\ of\ the\ eyetracking \ camera\ in\ degree\ ( both \ sides \ together)
-\\
+```
+```math
 height\_degree \ : \ the\ vertical\ scanning\ range\ of\ the\ eyetracking \ camera\ in\ degree\ ( both \ sides \ together)
 ```
 
