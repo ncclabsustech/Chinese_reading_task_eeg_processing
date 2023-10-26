@@ -129,11 +129,9 @@ PREE：End of the preface
 In this experimental program, we designed a personalized calibration procedure. A dot will appear sequentially at the four corners and center of the screen, each staying for 5 seconds. Participants are required to fixate on the center of the dot to complete the calibration. For each dot, we record the middle and later segment of the participant's gaze data (from 3s to 4s) and calculate the average point of gaze as the participant's mean fixation point. We then compare the average fixation point with the actual center position of the dot to calculate the error. By averaging the errors from all five dots, we obtain the final calibration error. If the final error is below the predetermined error threshold, we consider the calibration as successful. If the calibration is not successful, the experimental program will automatically return to the calibration phase and repeat the process until calibration is achieved.
 
 In order to align the coordinate systems of the eye tracker and the Psychopy program to obtain the actual positions of gaze points on the screen, we derived a transformation formula between the coordinate systems of the eye tracker and the Psychopy program using geometric relationships. This formula was then applied during the calibration process. The specific relationship is as follows:
-$$
+```math
 x_{\text{eyetracker}} = (\frac{{W \cdot x_{\text{psychopy}}}}{{d \cdot r \cdot \tan(\text{width\_degree/2})}} + 1 )  \cdot \frac{1}{2}
-$$
-**The Cauchy-Schwarz Inequality**
-$$\left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)$$
+```
 ```math
 y_{\text{eyetracker}} = (1 - \frac{{H \cdot y_{\text{psychopy}}}}{{d \cdot \tan(\text{height\_degree/2})}} )\cdot \frac{1}{2}
 ```
