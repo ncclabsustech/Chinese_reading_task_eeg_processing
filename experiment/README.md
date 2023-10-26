@@ -144,7 +144,7 @@ where :
 (x_{psychopy}, y_{psychopy}) \ is \ the \ coordinate \ in \ the \ psychopy\ coordinate \ system
 ```
 ```math
-W \ : \ the \ width \ of \ the \ screen\
+w \ : \ the \ width \ of \ the \ screen\
 ```
 ```math
 H \ : \ the \ height \ of \ the \ screen\
