@@ -130,10 +130,11 @@ In this experimental program, we designed a personalized calibration procedure. 
 
 In order to align the coordinate systems of the eye tracker and the Psychopy program to obtain the actual positions of gaze points on the screen, we derived a transformation formula between the coordinate systems of the eye tracker and the Psychopy program using geometric relationships. This formula was then applied during the calibration process. The specific relationship is as follows:
 
+```math
+x_{\text{eyetracker}} = (\frac{{W \cdot x_{\text{psychopy}}}}{{d \cdot r \cdot \tan(\text{width\_degree/2})}} + 1 )  \cdot \frac{1}{2}
 
-$$x_{\text{eyetracker}} = (\frac{{W \cdot x_{\text{psychopy}}}}{{d \cdot r \cdot \tan(\text{width\_degree/2})}} + 1 )  \cdot \frac{1}{2}
-
-y_{\text{eyetracker}} = (1 - \frac{{H \cdot y_{\text{psychopy}}}}{{d \cdot \tan(\text{height\_degree/2})}} )\cdot \frac{1}{2}$$
+y_{\text{eyetracker}} = (1 - \frac{{H \cdot y_{\text{psychopy}}}}{{d \cdot \tan(\text{height\_degree/2})}} )\cdot \frac{1}{2}
+```
 
 w here :
 $$
