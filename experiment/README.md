@@ -144,10 +144,10 @@ where :
 (x_{psychopy}, y_{psychopy}) \ is \ the \ coordinate \ in \ the \ psychopy\ coordinate \ system
 ```
 ```math
-W \ : \ the \ width \ of \ the \ screen,\
+W \ : \ the \ width \ of \ the \ screen\
 ```
 ```math
-H \ : \ the \ height \ of \ the \ screen,\
+H \ : \ the \ height \ of \ the \ screen\
 ```
 ```math
 r \ : \ the \ ratio \ of \ the \ width \ to \ the \ height
