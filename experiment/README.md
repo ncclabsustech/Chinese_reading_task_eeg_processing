@@ -143,7 +143,12 @@ where :
 ```math
 (x_{psychopy}, y_{psychopy}) \ is \ the \ coordinate \ in \ the \ psychopy\ coordinate \ system
 ```
-
+```math
+W \ : \ the \ width \ of \ the \ screen
+```
+```math
+H \ : \ the \ height \ of \ the \ screen
+```
 ```math
 r \ : \ the \ ratio \ of \ the \ width \ to \ the \ height
 ```
@@ -154,12 +159,7 @@ width\_degree \ : \ the\ horizontal\ scanning\ range\ of\ the\ eyetracking \ cam
 height\_degree \ : \ the\ vertical\ scanning\ range\ of\ the\ eyetracking \ camera\ in\ degree\ ( both \ sides \ together)
 ```
 
-```math
-W \ : \ the \ width \ of \ the \ screen\
-```
-```math
-H \ : \ the \ height \ of \ the \ screen\
-```
+
 
 
 
