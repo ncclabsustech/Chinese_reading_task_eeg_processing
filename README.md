@@ -25,7 +25,7 @@ For now, we have already recorded EEG data of 10 subjects, each data contains a 
 
 - [Liu Quanying] - 南方科技大学
   
-- [Xindi Wang]) - 科大讯飞
+- [Xindi Wang]) - 
 
 - [Wang Qing] - 上海精神卫生中心
   
