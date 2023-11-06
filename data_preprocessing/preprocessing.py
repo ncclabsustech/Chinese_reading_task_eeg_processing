@@ -72,11 +72,11 @@ def create_new_raw(raw, crop_time_at_beginning, montage_name='GSN-HydroCel-128',
 def process_single_eeg(eeg_path=None, sub_id='06', ses='LittlePrince',
                        task='LittlePrince', run=1, raw_data_root='dataset',
                        processed_data_root='dataset/derivatives/preproc',
-                       raw_extension='.fif', dataset_name='Novel Reading',
+                       dataset_name='Novel Reading',
                        author='Xinyu Mou, Cuilin He, Liwei Tan', line_freq=50,
                        start_chapter='CH01', low_pass_freq=0.5,
                        high_pass_freq=80, resample_freq=256,
-                       remaining_time_at_beginning=10, montage_name='GSN-HydroCel-128',
+                       remaining_time_at_beginning=10, bad_channels=[], montage_name='GSN-HydroCel-128',
                        ica_method='infomax', ica_n_components=15, rereference='average'):
     '''
     :param eeg_path: data path of the unprocessed eeg.
@@ -113,7 +113,7 @@ def process_single_eeg(eeg_path=None, sub_id='06', ses='LittlePrince',
 
     raw = read_mff_file(eeg_path=eeg_path, montage_name=montage_name, preload=True)
 
-    raw.info["bads"].append("E1")
+    raw.info["bads"].extend(bad_channels)
     raw = raw.interpolate_bads()
 
     # cut data
@@ -199,8 +199,8 @@ parser.add_argument('--sub_id', type=str, default='06')
 parser.add_argument('--ses', type=str, default='LittlePrince')
 parser.add_argument('--task', type=str, default='reading')
 parser.add_argument('--run', type=int, default=1)
-parser.add_argument('--raw_data_root', type=str, default='test_dataset')
-parser.add_argument('--processed_data_root', type=str, default='test_dataset/derivatives/preproc')
+parser.add_argument('--raw_data_root', type=str, default='dataset')
+parser.add_argument('--processed_data_root', type=str, default='dataset/derivatives/preproc')
 parser.add_argument('--dataset_name', type=str, default='Novel Reading')
 parser.add_argument('--author', type=str, default='Xinyu Mou, Cuilin He, Liwei Tan')
 parser.add_argument('--line_freq', type=float, default=50)
@@ -209,6 +209,7 @@ parser.add_argument('--low_pass_freq', type=float, default=0.5)
 parser.add_argument('--high_pass_freq', type=float, default=80)
 parser.add_argument('--resample_freq', type=float, default=256)
 parser.add_argument('--remaining_time_at_beginning', type=float, default=10)
+parser.add_argument('--bad_channels', type=list, default=[])  # e.g. ['E1', 'E2']
 parser.add_argument('--montage_name', type=str, default='GSN-HydroCel-128')
 parser.add_argument('--ica_method', type=str, default='infomax')
 parser.add_argument('--ica_n_components', type=int, default=20)
@@ -223,6 +224,7 @@ process_single_eeg(eeg_path=args.eeg_path, sub_id=args.sub_id, ses=args.ses,
                        author=args.author, line_freq=args.line_freq,
                        start_chapter=args.start_chapter, low_pass_freq=args.low_pass_freq,
                        high_pass_freq=args.high_pass_freq, resample_freq=args.resample_freq,
+                       bad_channels=args.bad_channels,
                        remaining_time_at_beginning=args.remaining_time_at_beginning, montage_name=args.montage_name,
                        ica_method=args.ica_method, ica_n_components=args.ica_n_components, rereference=args.rereference)
 
