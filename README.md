@@ -14,10 +14,32 @@ For now, we have already recorded EEG data of 10 subjects, each data contains a 
 
 - [Tan Liwei](https://github.com/tanliwei09) - Experiment conductor, Data processing, README writing.
 
-- [Zhang Jianyu](https://github.com/ionaaaa) - coder for Chinese corpus segmentation and EEG random masking. 
+- [Zhang Jianyu](https://github.com/ionaaaa) - coder for Chinese corpus segmentation and EEG random masking.
+  
+- [Tian Yan](https://github.com/Bryantianyan) - Experiment conductor
 
-  Feel free to contact us if you have any problem about the project !!!
+  Feel free to contact us if you have any questions about the project !!!
+  
+## Collaborators
+- [Wu Haiyan] -  澳门大学
 
+- [Liu Quanying] - 南方科技大学
+  
+- [Xindi Wang](https://github.com/sandywang) - 
+
+- [Wang Qing] - 上海精神卫生中心
+  
+- [Chen Zijiao] - National University of Singapore
+  
+- [Yang Yu-Fang] - Freie Universität Berlin
+  
+- [Hu Chuanpeng] - 南京师范大学
+  
+- [Xu Ting] - Child Mind Institute
+
+- [Cao Miao] - 北京大学
+
+- [Liang Huadong] - 科大讯飞
 ## Funding
 
 本项目受到天桥脑科学研究院MindX数据支持计划的部分资助（共计伍万元）。
