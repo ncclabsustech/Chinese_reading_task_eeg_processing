@@ -4,9 +4,7 @@ This document illustrates the pipeline of our EEG pre-processing and how to use 
 
 We upload a folder called `example-dataset`, which shows the structure of our dataset, which follows the BIDS standard format.
 
-##  Pipeline
-### Data Pre-processing
-
+## Data Pre-processing Pipeline
 Here, we pre-process our data to remove obvious artifact to the least extent. Our processing procedure includes these steps:
 
 #### Data Segmentation
