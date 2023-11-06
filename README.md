@@ -6,6 +6,18 @@ This project aims to provide a comprehensive paradigm for the establishment of a
 
 For now, we have already recorded EEG data of 10 subjects, each data contains a nearly 12 hours long time. 
 
+## Pipeline
+
+Our EEG recording and pre-processing pipeline is as follows:
+
+![](image/pipeline.png)
+
+## Device
+
+EGI: 128-channel
+
+eyetracker: Tobii Glass 3
+
 ## Credit 
 
 - [Mou Xinyu](https://github.com/12485953) - Coder for all parts of the project, Data processing, README writer for all parts.
