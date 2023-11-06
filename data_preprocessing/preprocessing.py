@@ -99,6 +99,7 @@ def process_single_eeg(eeg_path=None, sub_id='06', ses='LittlePrince',
     :param high_pass_freq: the high pass frequency of the filter.
     :param resample_freq: the resample frequency of the filter.
     :param remaining_time_at_beginning: the remaining time before the start of the valid eeg segment.
+    :param bad_channels: bad channels which should be interpolated at beginning.
     :param montage_name: the montage of the eeg.
     :param ica_method: which ica_method you want to use. See mne tutorial for more information.
     :param ica_n_components: how many ICA components you want to use. See mne tutorial for more information.
