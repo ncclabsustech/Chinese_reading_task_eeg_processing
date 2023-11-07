@@ -17,7 +17,7 @@ import matplotlib.pyplot as plt
 
 
 def convert_to_bids(raw, ica_component=None, ica_topo_figs=None, ica_dict=None, bad_channel_dict=None, sub_id='06', ses='LittlePrince',
-                    task='Reading', run=1, bids_root='derivative/preprocessed',
+                    task='Reading', run=1, bids_root='derivative/preproc',
                     dataset_name='Novel Reading', dataset_type='derivative',
                     author='Xinyu Mou, Cuilin He, Liwei Tan', line_freq=50):
     '''

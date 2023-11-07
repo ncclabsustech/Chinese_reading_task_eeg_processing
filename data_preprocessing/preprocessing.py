@@ -71,6 +71,7 @@ def create_new_raw(raw, crop_time_at_beginning, montage_name='GSN-HydroCel-128',
 
 def process_single_eeg(eeg_path=None, sub_id='06', ses='LittlePrince',
                        task='LittlePrince', run=1, raw_data_root='dataset',
+                       filtered_data_root='dataset/derivatives/filtered',
                        processed_data_root='dataset/derivatives/preproc',
                        dataset_name='Novel Reading',
                        author='Xinyu Mou, Cuilin He, Liwei Tan', line_freq=50,
@@ -87,6 +88,7 @@ def process_single_eeg(eeg_path=None, sub_id='06', ses='LittlePrince',
                 the file.
     :param run: an integer standing for the run number of the data.
     :param raw_data_root: the path of your raw data, which is also the root of the whole dataset.
+    :param filtered_data_root: the path of your filtered data.
     :param processed_data_root: the path of your pre-processed data.
     :param raw_extension: the file extension when saving the data, can be '.fif', '.edf', '.set'
     :param dataset_name: name of the dataset, which will be saved in the dataset_description.json.
@@ -106,13 +108,13 @@ def process_single_eeg(eeg_path=None, sub_id='06', ses='LittlePrince',
     :param rereference: re-reference method you want to use.
     '''
 
-    raw = read_mff_file(eeg_path=eeg_path, montage_name=montage_name)
+    raw = read_mff_file(eeg_path=eeg_path, montage_name=montage_name, preload=True)
 
     convert_to_bids(raw, ica_component=None, ica_topo_figs=None, ica_dict=None, bad_channel_dict=None, sub_id=sub_id, ses=ses,
                     task=task, run=run, bids_root=raw_data_root, dataset_name=dataset_name,
                     dataset_type='raw', author=author, line_freq=line_freq)
 
-    raw = read_mff_file(eeg_path=eeg_path, montage_name=montage_name, preload=True)
+    #raw = read_mff_file(eeg_path=eeg_path, montage_name=montage_name, preload=True)
 
     raw.info["bads"].extend(bad_channels)
     raw = raw.interpolate_bads()
@@ -137,6 +139,16 @@ def process_single_eeg(eeg_path=None, sub_id='06', ses='LittlePrince',
 
     # band pass filter
     raw = raw.filter(l_freq=low_pass_freq, h_freq=high_pass_freq)
+
+    filt_raw = create_new_raw(raw=raw, crop_time_at_beginning=crop_start_time, montage_name='GSN-HydroCel-128',
+                                 preload=False)
+
+    convert_to_bids(filt_raw, ica_component=None, ica_topo_figs=None, ica_dict=None,
+                    bad_channel_dict=None, sub_id=sub_id, ses=ses,
+                    task=task, run=run, bids_root=filtered_data_root,
+                    dataset_name=dataset_name, dataset_type='derivative',
+                    author=author, line_freq=line_freq)
+
 
     print('-------------------- filter finished --------------------')
 
@@ -186,9 +198,9 @@ def process_single_eeg(eeg_path=None, sub_id='06', ses='LittlePrince',
     # plot final data
     raw.plot(block=True)
 
-    raw = create_new_raw(raw=raw, crop_time_at_beginning=crop_start_time, montage_name='GSN-HydroCel-128', preload=False)
+    preproc_raw = create_new_raw(raw=raw, crop_time_at_beginning=crop_start_time, montage_name='GSN-HydroCel-128', preload=False)
 
-    convert_to_bids(raw, ica_component=ica_components, ica_topo_figs=ica_topo_figs, ica_dict=ica_dict, bad_channel_dict=bad_channel_dict, sub_id=sub_id, ses=ses,
+    convert_to_bids(preproc_raw, ica_component=ica_components, ica_topo_figs=ica_topo_figs, ica_dict=ica_dict, bad_channel_dict=bad_channel_dict, sub_id=sub_id, ses=ses,
                     task=task, run=run, bids_root=processed_data_root,
                     dataset_name=dataset_name, dataset_type='derivative',
                     author=author, line_freq=line_freq)
@@ -196,12 +208,13 @@ def process_single_eeg(eeg_path=None, sub_id='06', ses='LittlePrince',
 
 parser = argparse.ArgumentParser(description='Parameters that can be changed in this experiment')
 parser.add_argument('--eeg_path', type=str, default='subject_07\LittlePrince\eegdata\subject_07_eeg_01.mff')
-parser.add_argument('--sub_id', type=str, default='06')
+parser.add_argument('--sub_id', type=str, default='07')
 parser.add_argument('--ses', type=str, default='LittlePrince')
 parser.add_argument('--task', type=str, default='reading')
 parser.add_argument('--run', type=int, default=1)
-parser.add_argument('--raw_data_root', type=str, default='dataset')
-parser.add_argument('--processed_data_root', type=str, default='dataset/derivatives/preproc')
+parser.add_argument('--raw_data_root', type=str, default='test_dataset')
+parser.add_argument('--filtered_data_root', type=str, default='test_dataset/derivatives/filtered')
+parser.add_argument('--processed_data_root', type=str, default='test_dataset/derivatives/preproc')
 parser.add_argument('--dataset_name', type=str, default='Novel Reading')
 parser.add_argument('--author', type=str, default='Xinyu Mou, Cuilin He, Liwei Tan')
 parser.add_argument('--line_freq', type=float, default=50)
@@ -220,6 +233,7 @@ args = parser.parse_args()
 
 process_single_eeg(eeg_path=args.eeg_path, sub_id=args.sub_id, ses=args.ses,
                        task=args.task, run=args.run, raw_data_root=args.raw_data_root,
+                       filtered_data_root=args.filtered_data_root,
                        processed_data_root=args.processed_data_root,
                        dataset_name=args.dataset_name,
                        author=args.author, line_freq=args.line_freq,
