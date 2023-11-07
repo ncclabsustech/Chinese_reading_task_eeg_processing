@@ -17,7 +17,7 @@ Before we do ICA, we will first follow some basic steps, including down-sampling
 
 #### Filtering
 
-We will filter the data using a band pass filter to remove artifact. In our processing, we set the pass band to 0.1-80 Hz
+We will filter the data using a band pass filter to remove artifact. In our processing, we set the pass band to 0.5-80 Hz
 
 #### Bad Channel Interpolation and Bad Segment Mask
 
@@ -25,7 +25,7 @@ Then we will  interpolate the bad channel using method implemented in the `MNE` 
 
 ####  ICA
 
-We use ICA to remove ocular artifact, cardial artifact, muscle movement artifact and other possible artifact. In our own processing, we set the parameter  `n_component` to 15 to make sure we can find all possible artifact. We use `infomax` algorithm. You can change these parameters on your own. Details about how to change parameters will be explained in the Code part.
+We use ICA to remove ocular artifact, cardial artifact, muscle movement artifact and other possible artifact. In our own processing, we set the parameter  `ica_n_component` to 20 to make sure we can find all possible artifact. We use `infomax` algorithm. You can change these parameters on your own. Details about how to change parameters will be explained in the Code part.
 
 #### Re-reference
 
@@ -37,21 +37,22 @@ Lastly, we will re-reference our data. In our implementation, we use the 'averag
 
 We recommand Python 3.10.4, which is our own setting.
 
-package `MNE` , `numpy` and `mne-bids` are required. You can get these three packages using the following commands:
+package `MNE`, `mne-bids`, `pybv`are required. You can get these three packages using the following commands:
 
 ``` 
-pip install "mne>=1.0" matplotlib mne-qt-browser
-```
-
-```
-pip install numpy
+conda install --channel=conda-forge --name=base mamba
+mamba create --override-channels --channel=conda-forge --name=mne mne
 ```
 
 ```
 pip install --upgrade mne-bids[full]
 ```
 
-**Make sure that the `mne-qt-browser`  is installed, otherwise you can not using the GUI of the MNE methods correctly. `MNE` version>=1.0 is required to support the qt-browser**. For more information, you can turn to these pages: https://github.com/mne-tools/mne-qt-browser, https://github.com/mne-tools/mne-qt-browser, https://mne.tools/mne-bids/stable/install.html.
+```
+pip install pybv
+```
+
+**Make sure that the full `mne` package is installed using the command above, otherwise you can not using the GUI of the MNE methods correctly. `MNE` version>=1.0 is required to support the GUI qt-browser**. `pybv`==0.7.5 is recommended. For more information, you can turn to these pages: https://mne.tools/stable/install/manual_install.html#manual-install, https://mne.tools/mne-bids/stable/install.html, https://pybv.readthedocs.io/en/stable/.
 
 ### Code Usage
 
@@ -69,8 +70,8 @@ The detailed information about the parameters are shown below:
 | task                        | str   | a string describing the task of the current data. It will be contained in the file name when saving the file. |
 | run                         | int   | an integer standing for the run number of the data.          |
 | raw_data_root               | str   | the path of your raw data, which is also the root of the whole dataset. |
+| filtered_data_root          | str   | the path of your filtered data.                              |
 | processed_data_root         | str   | the path of your pre-processed data.                         |
-| raw_extension               | str   | the file extension when saving the data, can be '.fif', '.edf', '.set' |
 | dataset_name                | str   | name of the dataset, which will be saved in the dataset_description.json. |
 | author                      | str   | author of the dataset.                                       |
 | line_freq                   | float | line frequency of the data. This is needed when saving the data into BIDS format.                   Default to be 50. |
@@ -140,13 +141,13 @@ our derivative data is pre-processed under these settings of the parameters:
 
 | Parameters                      | setting          |
 | ------------------------------- | ---------------- |
-| low_pass_freq (Hz)              | 0.1              |
+| low_pass_freq (Hz)              | 0.5              |
 | high_pass_freq (Hz)             | 80               |
 | resample_freq (Hz)              | 256              |
 | remaining_time_at_beginning (s) | 10               |
 | montage_name                    | GSN-HydroCel-128 |
 | ica_method                      | infomax          |
-| ica_n_components                | 15               |
+| ica_n_components                | 20               |
 | rereference                     | average          |
 
 ### Processing Record 

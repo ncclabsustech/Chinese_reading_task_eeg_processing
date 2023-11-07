@@ -4,7 +4,7 @@
 
 This project aims to provide a comprehensive paradigm for the establishment of an EEG dataset based on Chinese linguistic corpus. It seeks to facilitate the advancement of technologies related to EEG-based semantic decoding and brain-computer interfaces. The project is currently divided into the following modules: Chinese corpus segmentation, experimental design and stimulus presentation, data preprocessing, and data masking. For detailed information on each module, please refer to the README document in the respective folders or view the relevant code.
 
-For now, we have already recorded EEG data of 10 subjects, each data contains a nearly 12 hours long time. 
+For now, We recruited a total of 10 participants whose native language is Chinese. Each participant fully engaged in a Chinese novel reading task with a total duration of 12 hours, collectively accumulating 120 hours of data.
 
 ## Pipeline
 
@@ -14,9 +14,29 @@ Our EEG recording and pre-processing pipeline is as follows:
 
 ## Device
 
-EGI: 128-channel
+### EEG Recording: EGI Geodesic EEG 400 series 
 
-eyetracker: Tobii Glass 3
+During the experiment, The EEG (electroencephalography) data were collected by a `128-channel` EEG system with Geodesic Sensor Net (EGI Inc., Eugene, OR, USA, [Geodesic EEG System 400 series (egi.com)](https://www.egi.com/clinical-division/clinical-division-clinical-products/ges-400-series)). The montage system of this device is `GSN-HydroCel-128`.We recorded the data at a sampling rate of 1000 Hz with **a 0.01–30 Hz band-pass ﬁlter**.
+
+![](image/egi_montage.png)
+
+The 128-channel EEG system with Geodesic Sensor Net (GSN) by EGI is a sophisticated brain activity recording tool designed for high-resolution neuroscientific research. This system features an array of evenly spaced sensors providing complete scalp coverage, ensuring detailed spatial data collection without the need for interpolation. Coupled with the advanced Net Amps 400 amplifiers and intuitive Net Station 5 software, it delivers low noise, high sensitivity EEG data acquisition, and powerful data analysis capabilities, making it an ideal choice for dynamic and expanding research environments.
+
+### Eyetracking: Tobii Pro Glasses 3
+
+We utilized Tobii Pro Glasses 3 ([Tobii Pro Glasses 3 | Latest in wearable eye tracking - Tobii](https://www.tobii.com/products/eye-trackers/wearables/tobii-pro-glasses-3)) to record the participants' eye movement trajectories to inspect whether they followed the instructions of the experiment, that is, their gaze should move along with the red highlighted text.
+
+The Tobii Pro Glasses 3 are advanced wearable eye trackers. They are capable of capturing natural viewing behavior in real-world environments, providing powerful insights from a first-person perspective. The device features 16 illuminators and four eye cameras integrated into scratch-resistant lenses, a wide-angle scene camera, and a built-in microphone, allowing for a comprehensive capture of participant behavior and environmental context. Its eye tracking is reliable across different populations, unaffected by eye color or shape. The Tobii Pro Glasses 3 operates with a high sampling rate of 50 Hz or 100 Hz. It supports a one-point calibration procedure. 
+
+## Experiment
+
+In the preparation phase of the experiment, we initially fitted participants with EEG caps and eye trackers, maintaining a distance of 67 cm from the screen. We emphasized to the participants that they should keep their heads still during the experiment, and their gaze should follow the red highlighted text as shown in the figure. 
+
+![](image/screen.png)
+
+After ensuring the participants fully understood the instructions, we commenced the experimental procedure. Initially, there was an eye tracker calibration phase, followed by a practice reading phase, and finally the formal reading phase. Each formal reading phase lasted for approximately 30 minutes. The experimental setup and procedure are as below:
+
+![]()
 
 ## Credit 
 
@@ -29,6 +49,8 @@ eyetracker: Tobii Glass 3
 - [Zhang Jianyu](https://github.com/ionaaaa) - coder for Chinese corpus segmentation and EEG random masking.
   
 - [Tian Yan](https://github.com/Bryantianyan) - Experiment conductor
+
+- [Chen Yizhe]() - Experimental instrument debugging
 
   Feel free to contact us if you have any questions about the project !!!
   

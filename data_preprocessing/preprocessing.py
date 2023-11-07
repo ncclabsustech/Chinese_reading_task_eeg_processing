@@ -90,7 +90,6 @@ def process_single_eeg(eeg_path=None, sub_id='06', ses='LittlePrince',
     :param raw_data_root: the path of your raw data, which is also the root of the whole dataset.
     :param filtered_data_root: the path of your filtered data.
     :param processed_data_root: the path of your pre-processed data.
-    :param raw_extension: the file extension when saving the data, can be '.fif', '.edf', '.set'
     :param dataset_name: name of the dataset, which will be saved in the dataset_description.json.
     :param author: author of the dataset.
     :param line_freq: line frequency of the data. This is needed when saving the data into BIDS format.
