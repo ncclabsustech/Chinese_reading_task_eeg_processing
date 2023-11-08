@@ -103,7 +103,7 @@ The data is formatted under the requirement of the BIDS standard format. The det
 
 ![](image/structure_new.png)
 
-Here is a summary of the main components of this dataset and the significance of related files. files named as "sub-xx" in the root directory contains the raw eeg data and the eyetracking data, while "sub-xx" in the derivative/preprocessed directory contains the pre-processed data. Here we will have a detailed explanation of the pre-processed data in the derivative/processed directory:
+Here is a summary of the main components of this dataset and the significance of related files. files named as `sub-xx` in the root directory contains the raw eeg data and the eyetracking data, while `sub-xx` in the `derivatives/filtered_xx_xx` and `derivatives/preprocessed` directory contains the filtered data and pre-processed data respectively. The number in the filtered directory indicates the cut-off frequency of the band pass filter. Here we will have a detailed explanation of the pre-processed data in the `derivatives/processed` directory:
 
 - dataset_description.json: Provides general information about the dataset, such as its name, authors, description, and references.
 
