@@ -24,7 +24,6 @@ def read_mff_file(eeg_path, montage_name='GSN-HydroCel-128', preload=False):
     '''
     raw = mne.io.read_raw_egi(eeg_path)
     events = mne.find_events(raw, )
-
     event_id = raw.event_id
     event_desc = {value: key for key, value in event_id.items()}
 
@@ -68,6 +67,8 @@ def create_new_raw(raw, crop_time_at_beginning, montage_name='GSN-HydroCel-128',
         new_raw = new_raw.load_data()
 
     return new_raw
+
+
 
 def process_single_eeg(eeg_path=None, sub_id='06', ses='LittlePrince',
                        task='LittlePrince', run=1, raw_data_root='dataset',
@@ -206,7 +207,7 @@ def process_single_eeg(eeg_path=None, sub_id='06', ses='LittlePrince',
 
 
 parser = argparse.ArgumentParser(description='Parameters that can be changed in this experiment')
-parser.add_argument('--eeg_path', type=str, default='subject_07\LittlePrince\eegdata\subject_07_eeg_01.mff')
+parser.add_argument('--eeg_path', type=str, default='subject_07_eeg_01.mff')
 parser.add_argument('--sub_id', type=str, default='07')
 parser.add_argument('--ses', type=str, default='LittlePrince')
 parser.add_argument('--task', type=str, default='reading')

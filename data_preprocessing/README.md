@@ -161,40 +161,30 @@ Here we have a detailed record of our processing of each eeg data **(just an exa
 
 ### Manual Processing Criteria
 
-Criteria for bad channel selection：
+Example Name: subject_04_eeg_01
 
-- Equipment-related bad channels: For example, broken connections or inability to reduce impedance (as described in the experimental records)
+ICA Example Figure：
 
-- Noise level: Large segments of high-frequency noise and interference, occupying more than 70% of the signal.
+![](image/ica_topo.png)
 
- 
+Components to Exclude:
 
-Criteria for bad segment selection：
+ICA001: This component has local maxima in the frontal area, which is a typical feature of eye blink artifacts.
 
-- Motion artifacts: Drift in the EEG signal caused by head or body movements, such as eye blinks, eye movements, drift, etc.
+![](image/ica_001.png)
 
-- Noise level: Presence of large segments of high-frequency noise and interference in the bad segment, with noise occupying more than 80% of the signal.
+ICA006: This component may represent artifacts of eye movements or eye scanning, as it shows local maxima on the frontal and lateral aspects of the scalp.
 
-- Electrode looseness or detachment: Decreased signal quality due to electrodes detaching from the scalp, for example, significant changes in signal amplitude or sudden abnormal high or low impedance.
+![](image/ica_006.png)
 
+ICA010: This component may be related to eye movement and electrocardiographic artifacts, as it exhibits local maxima in the frontal region and near the ears.
 
- ICA (Independent Component Analysis) screening criteria:
+![](image/ica_010.png)
 
-Typical features include:
+ICA007: This component may be temporally related to electrocardiographic artifacts, as it is characterized by prominent maxima near the ears.
 
-1. Eye artifacts
+![](image/ica_007.png)
 
-   ![](image/eye_artifact.jpg)
+ICA015: This component may be temporally related to electrocardiographic artifacts, as it exhibits characteristic maxima at the edges of the scalp.
 
-   2.Muscle artifacts
-
-   ![](image/muscle_artifact.jpg)
-
-  3.Channel noise
-
-   ![](image/channel_artifact.jpg)
-
-  4.Cardiac activity
-
-   ![](image/cardiac_artifact.jpg)
-
+![](image/ica_015.png)

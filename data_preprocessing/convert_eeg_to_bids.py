@@ -51,6 +51,7 @@ def convert_to_bids(raw, ica_component=None, ica_topo_figs=None, ica_dict=None, 
     bids_path = BIDSPath(subject=sub_id, session=ses, task=task, run=run, root=bids_root)
     basename = str(bids_path.basename)
 
+    events, event_id = mne.events_from_annotations(raw)
     write_raw_bids(raw, bids_path, format='BrainVision', allow_preload=True, overwrite=True)
 
     fpath = bids_path.fpath
