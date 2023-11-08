@@ -31,11 +31,6 @@ from egi_pynetstation.NetStation import NetStation  # the package to connect and
 
 from g3pylib import connect_to_glasses
 
-from time import time
-import time
-
-from cut_Chinese_novel import calculate_length_without_punctuation_and_indexes
-
 import asyncio
 
 import os
@@ -50,6 +45,19 @@ import csv
 
 Logging.basicConfig(level=Logging.INFO)
 
+
+def calculate_length_without_punctuation_and_indexes(sentence):
+    """计算一个句子中除标点以外的长度和所有非标点位置的坐标"""
+    punctuations = ['\n', '。', '，', '！', '？', '：', '；', '“', '”', '、', '《', '》', '.', '（', '）', '…', '·']
+    sentence_list = list(sentence)
+    length_without_punctuation = 0
+    indexes = []
+    for index, char in enumerate(sentence_list):
+        if char not in punctuations:
+            length_without_punctuation += 1
+            indexes.append(index)
+
+    return length_without_punctuation, indexes
 
 async def rest_with_eyetracker(g3, routineTimer, win, thisTrialsPlay, texts, eci_client=None):
     """Take a break during reading, with a mandatory break duration set to 20 seconds by default (you
