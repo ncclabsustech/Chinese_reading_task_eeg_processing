@@ -55,11 +55,11 @@ After ensuring the participants fully understood the instructions, we commenced 
   Feel free to contact us if you have any questions about the project !!!
   
 ## Collaborators
-- [Wu Haiyan] -  澳门大学
+- [Wu Haiyan](https://github.com/haiyan0305)  -  澳门大学
 
 - [Liu Quanying] - 南方科技大学
   
-- [Xindi Wang](https://github.com/sandywang) - 
+- [Wang Xindi](https://github.com/sandywang) 
 
 - [Wang Qing] - 上海精神卫生中心
   
