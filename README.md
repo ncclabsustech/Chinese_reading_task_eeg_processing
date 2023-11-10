@@ -46,7 +46,7 @@ After ensuring the participants fully understood the instructions, we commenced 
 
 - [Tan Liwei](https://github.com/tanliwei09) - Experiment conductor, Data processing, README writing.
 
-- [Zhang Jianyu](https://github.com/ionaaaa) - coder for Chinese corpus segmentation and EEG random masking.
+- [Zhang Jianyu](https://github.com/ionaaaa) - Coder for Chinese corpus segmentation and EEG random masking.
   
 - [Tian Yan](https://github.com/Bryantianyan) - Experiment conductor
 
