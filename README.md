@@ -10,7 +10,7 @@ For now, We recruited a total of 10 participants whose native language is Chines
 
 Our EEG recording and pre-processing pipeline is as follows:
 
-![](image/pipeline.png)
+![](image/pipeline_english.png)
 
 ## Device
 
@@ -73,7 +73,7 @@ After ensuring the participants fully understood the instructions, we commenced 
 
 - [Cao Miao] - 北京大学
 
-- [Liang Huadong] - 科大讯飞
+- [Liang Huadong](https://github.com/Romantic-Pumpkin) - 科大讯飞股份有限公司
 ## Funding
 
 本项目受到天桥脑科学研究院MindX数据支持计划的部分资助（共计伍万元）。

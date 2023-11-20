@@ -2,7 +2,7 @@
 
 This document illustrates the pipeline of our EEG pre-processing and how to use our code to deal with the EEG data. Besides, an explanation of our dataset is provided for your reference.
 
-We upload a folder called `example-dataset`, which shows the structure of our dataset, which follows the BIDS standard format.
+We upload a folder called `example_bids_dataset` in `data` folder, which shows the structure of our dataset, which follows the BIDS standard format.
 
 ## Data Pre-processing Pipeline
 Here, we pre-process our data to remove obvious artifact to the least extent. Our processing procedure includes these steps:
@@ -101,7 +101,7 @@ Our dataset consists of three main parts. The first part is the raw EEG data. Th
 
 The data is formatted under the requirement of the BIDS standard format. The detailed format of our data structure is shown as follows:
 
-![](image/structure_new.png)
+![](../image/structure_new.png)
 
 Here is a summary of the main components of this dataset and the significance of related files. files named as `sub-xx` in the root directory contains the raw eeg data and the eyetracking data, while `sub-xx` in the `derivatives/filtered_xx_xx` and `derivatives/preprocessed` directory contains the filtered data and pre-processed data respectively. The number in the filtered directory indicates the cut-off frequency of the band pass filter. Here we will have a detailed explanation of the pre-processed data in the `derivatives/processed` directory:
 
@@ -165,26 +165,26 @@ Example Name: subject_04_eeg_01
 
 ICA Example Figure：
 
-![](image/ica_topo.png)
+![](../image/ica_topo.png)
 
 Components to Exclude:
 
 ICA001: This component has local maxima in the frontal area, which is a typical feature of eye blink artifacts.
 
-![](image/ica_001.png)
+![](../image/ica_001.png)
 
 ICA006: This component may represent artifacts of eye movements or eye scanning, as it shows local maxima on the frontal and lateral aspects of the scalp.
 
-![](image/ica_006.png)
+![](../image/ica_006.png)
 
 ICA010: This component may be related to eye movement and electrocardiographic artifacts, as it exhibits local maxima in the frontal region and near the ears.
 
-![](image/ica_010.png)
+![](../image/ica_010.png)
 
 ICA007: This component may be temporally related to electrocardiographic artifacts, as it is characterized by prominent maxima near the ears.
 
-![](image/ica_007.png)
+![](../image/ica_007.png)
 
 ICA015: This component may be temporally related to electrocardiographic artifacts, as it exhibits characteristic maxima at the edges of the scalp.
 
-![](image/ica_015.png)
+![](../image/ica_015.png)

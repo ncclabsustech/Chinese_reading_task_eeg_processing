@@ -1,0 +1,10 @@
+{
+    "Name": "Novel Reading",
+    "BIDSVersion": "1.7.0",
+    "DatasetType": "raw",
+    "Authors": [
+        "Xinyu Mou",
+        "Cuilin He",
+        "Liwei Tan"
+    ]
+}

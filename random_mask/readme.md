@@ -1,22 +1,20 @@
-# random_mask
+# Random Mask for EEG Data
 
-## 功能概述
+## Introduction
 
-本代码旨在实现EEG数据的随机掩码。
+This script aims at implementing random mask for EEG data.
 
-## 依赖项
+## Environment Requirement
 
-import matplotlib >= 3.7.0
+`matplotlib >= 3.7.0`
 
-import numpy >= 1.25.0
+`numpy >= 1.25.0`
 
-## 测试数据
+## Example
 
-test.npy，一段(15, 2560)的EEG数据。15为通道数，2560为长度。
+We use an EEG data of shape (15, 2560), where 15 is the channel number and 2560 stands for the data length. The data can be found in `data/random_mask/test.npy`.
 
-## 使用示例
-
-以下是如何使用该代码的示例：
+Here is the example of how to use this scripts：
 
 ```
 import numpy as np
@@ -33,10 +31,10 @@ plt.title("mask_rate=0.75, same_place=True")
 plt.show()
 ```
 
-运行代码结果如下：
-![](https://files.mdnice.com/user/42793/899ef05f-c530-4870-8afe-3ec0f9e2a557.png)
+The result is shown below：
+![](../image/random_mask1.png)
 
-若`same_place=True`，则所有通道mask的位点一致：
+if `same_place=True`, Then all the channels are masked in the same place：
 
 ```
 masked = mask(input_eeg_copy, mask_rate=0.75, same_place=True)
@@ -47,21 +45,20 @@ plt.title("mask_rate=0.75, same_place=True")
 plt.show()
 ```
 
-![](https://files.mdnice.com/user/42793/0a875d8e-7e01-403f-8a07-2ac04fe422d0.png)
+![](../image/random_mask2.png)
 
-若`same_place=False`，则所有通道mask的位点不一致：
-
-
-![](https://files.mdnice.com/user/42793/cc97c6a7-542f-4280-8aa1-00544ecf2e45.png)
+if `same_place=False`，Then all the channels are **not** masked in the same place：
 
 
+![](../image/random_mask3.png)
 
 
 
-## 主要函数
 
-`generate_unique_array(length, upper_limit)`：产生一个随机的，每个元素不重复的向量。用于决定mask掉数据中哪些位点。
 
-`mask(eeg, mask_rate, same_place=False)`：随机mask EEG数据。
+## Main Functions
 
+`generate_unique_array(length, upper_limit)`：Produce a random vector with no duplicated element. Used to determine the sites for masking.
+
+`mask(eeg, mask_rate, same_place=False)`：To mask EEG data randomly.
 
