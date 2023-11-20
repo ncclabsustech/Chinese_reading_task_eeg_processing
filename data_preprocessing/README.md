@@ -35,7 +35,7 @@ Lastly, we will re-reference our data. In our implementation, we use the 'averag
 
 ### Environment Requirement
 
-We recommand Python 3.10.4, which is our own setting.
+We recommand Python 3.10, which is our own setting.
 
 package `MNE`, `mne-bids`, `pybv`are required. You can get these three packages using the following commands:
 
