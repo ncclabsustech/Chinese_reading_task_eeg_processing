@@ -40,8 +40,8 @@ We recommand Python 3.10, which is our own setting.
 package `MNE`, `mne-bids`, `pybv`are required. You can get these three packages using the following commands:
 
 ``` 
-conda install --channel=conda-forge --name=base mamba
-mamba create --override-channels --channel=conda-forge --name=mne mne
+conda install --channel=conda-forge mamba
+mamba create --override-channels --channel=conda-forge mne
 ```
 
 ```

@@ -371,7 +371,7 @@ def save_to_xlsx(file_path, file_name, text, indexes=None, main_row=None, row_nu
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Parameters that can be changed in this experiment')
     
-    parser.add_argument('--Chinese_novel_path', type=str, default=r'..\data\novel\xiaowangzi_main_text.txt', help='Path to your .txt Chinese novel content')
+    parser.add_argument('--Chinese_novel_path', type=str, default=r'../data/novel/xiaowangzi_main_text.txt', help='Path to your .txt Chinese novel content')
     parser.add_argument('--divide_nums', type=str, default='4, 8, 12, 16, 20, 24', help='Breakpoints which you want to divide your novel (comma-separated)')
     args = parser.parse_args()
 
@@ -390,7 +390,7 @@ if __name__ == '__main__':
         result = arrange_sentences_within_30_words(result)
         result = split_row(result)
 
-        save_to_xlsx(r'..\data\segmented_novel', r'\segmented_Chinense_novel.xlsx', result[1:])
+        save_to_xlsx(r'../data/segmented_novel', r'/segmented_Chinense_novel.xlsx', result[1:])
 
         preface, main_content_parts = split_preface_main_content(result, args.divide_nums)
 
@@ -399,9 +399,9 @@ if __name__ == '__main__':
         preface_text, preface_indexes, preface_main_row, preface_row_num = arrange_sentences_in_psychopy_requirement(
             preface)
 
-        save_to_xlsx(r'..\data\segmented_novel', r'\segmented_Chinense_novel_preface.xlsx', preface_text, preface_indexes, preface_main_row, preface_row_num)
+        save_to_xlsx(r'../data/segmented_novel', r'/segmented_Chinense_novel_preface.xlsx', preface_text, preface_indexes, preface_main_row, preface_row_num)
 
         for i, main_content_part in enumerate(main_content_parts):
             text, indexes, main_row, row_num = arrange_sentences_in_psychopy_requirement(main_content_part)
-            file_name = r'\segmented_Chinense_novel_main_' + str(round(i+1)) + '.xlsx'
-            save_to_xlsx(r'..\data\segmented_novel', file_name, text, indexes, main_row, row_num)
+            file_name = r'/segmented_Chinense_novel_main_' + str(round(i+1)) + '.xlsx'
+            save_to_xlsx(r'../data/segmented_novel', file_name, text, indexes, main_row, row_num)

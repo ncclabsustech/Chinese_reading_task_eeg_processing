@@ -4,6 +4,14 @@
 
 This README file aims to illustrate how to segment Chinese novel using our code.
 
+## Environment
+
+We use `xlsx` files to save our segmented novel. We use the package `openpyxl` to write the content to excel files. You can install this package with pip:
+
+```
+pip install openpyxl
+```
+
 ## Code Explanation
 
 You should run `cut_Chinese_novel.py` to process your `.txt` formated Chinese novel for sentence segmentation, obtaining the corresponding formatted `.xlsx` files. 

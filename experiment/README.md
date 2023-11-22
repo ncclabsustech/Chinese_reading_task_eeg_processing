@@ -44,6 +44,10 @@ You should first clone the package:
 git clone https://github.com/tobiipro/g3pylib.git
 ```
 
+```
+cd g3pylib
+```
+
 Then you can install the package under the path of the cloned package using the following command:
 
 ```

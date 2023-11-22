@@ -44,7 +44,7 @@ def mask(eeg, mask_rate, same_place=False):
     return eeg
 
 def main():
-    input_eeg = np.load(r"..\data\random_mask\test.npy")[:, :1000] # (15, 2560)
+    input_eeg = np.load(r"../data/random_mask/test.npy")[:, :1000] # (15, 2560)
     input_eeg_copy = np.copy(input_eeg)
     # masked = mask(input_eeg_copy, mask_rate=0.75, same_place=True)
 

@@ -96,4 +96,4 @@ def align_eeg_with_sentence(eeg_path, novel_path, start_index, end_index, montag
 
 
 
-align_eeg_with_sentence(eeg_path='sub-07_ses-LittlePrince_task-reading_run-01_eeg.vhdr', novel_path=r'..\data\segmented_novel\segmented_Chinense_novel.xlsx', start_index=1, end_index=4)
+align_eeg_with_sentence(eeg_path='sub-07_ses-LittlePrince_task-reading_run-01_eeg.vhdr', novel_path=r'../data/segmented_novel/segmented_Chinense_novel.xlsx', start_index=1, end_index=4)

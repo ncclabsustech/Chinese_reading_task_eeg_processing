@@ -57,10 +57,10 @@ def convert_to_bids(raw, ica_component=None, ica_topo_figs=None, ica_dict=None, 
     fpath = bids_path.fpath
     eeg_file_directory = str(fpath.parent)
 
-    ica_component_path = eeg_file_directory + '\\' + basename + '_ica_components.npy'
-    ica_topo_path = eeg_file_directory + '\\' + basename + '_ica_components_topography'
-    ica_json_path = eeg_file_directory + '\\' + basename + '_ica_components.json'
-    bad_channel_path = eeg_file_directory + '\\' + basename + '_bad_channels.json'
+    ica_component_path = eeg_file_directory + '/' + basename + '_ica_components.npy'
+    ica_topo_path = eeg_file_directory + '/' + basename + '_ica_components_topography'
+    ica_json_path = eeg_file_directory + '/' + basename + '_ica_components.json'
+    bad_channel_path = eeg_file_directory + '/' + basename + '_bad_channels.json'
 
 
     # save ICA components
