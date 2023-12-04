@@ -103,35 +103,19 @@ The data is formatted under the requirement of the BIDS standard format. The det
 
 ![](../image/structure_new.png)
 
-Here is a summary of the main components of this dataset and the significance of related files. files named as `sub-xx` in the root directory contains the raw eeg data and the eyetracking data, while `sub-xx` in the `derivatives/filtered_xx_xx` and `derivatives/preprocessed` directory contains the filtered data and pre-processed data respectively. The number in the filtered directory indicates the cut-off frequency of the band pass filter. Here we will have a detailed explanation of the pre-processed data in the `derivatives/processed` directory:
+The dataset is organized following the EEG-BIDS specification, which is an extension to the brain imaging data structure for EEG. The repository contains two regular BIDS files, 10 participants' data folders and a derivatives folder. The stand-alone files offer an overview about the dataset: 
 
-- dataset_description.json: Provides general information about the dataset, such as its name, authors, description, and references.
+i) `dataset_description.json` is a JSON file depicting the dataset, such as the objective, acquisition time, and location; 
 
-- participants.json and participants.tsv: Contain participant metadata. Specifically, participants.tsv is a tab-separated values file with participant information, and participants.json is the same information in a structured JSON format.
+ii) `participants.tsv` contains participants' demographic information, such as age, sex, and handedness; 
 
-- sub-xx/: Contains data for a specific participant.
+iii) `participants.json` describes the column attributes in `participants.tsv`. 
 
-- ses-xx/: Corresponds to a specific session (e.g. ses-LittlePrince) for a subject.
-
-- eeg/: Contains EEG data for the participant during the session.
-
-- sub-xx_ses-xx_scans.tsv: This TSV (tab-separated values) file contains information about the scans or recording sessions for the subject during the Little Prince session.
-
-- sub-xx_ses-xx_space-CapTrak_coordsystem.json: This JSON file describes the coordinate system used for EEG electrode placement, possibly in the CapTrak system.
-
-- sub-xx_ses-xx_space-CapTrak_electrodes.tsv: This TSV file provides information about the EEG electrodes used during the session.
-
-- sub-xx_ses-xx_task-xx_events.json and sub-xx_ses-xx_task-xx_events.tsv: These files describe events or stimuli that occurred during the EEG recording session.
-
-- sub-xx_ses-xx_task-xx_run-xx_desc-preproc_bad_channel.json: This JSON file contains information about channels that  have been identified as "bad" during pre-processing.
-
-- sub-xx_ses-xx_task-xx_run-xx_desc-preproc_channels.tsv: This TSV file provides details about the EEG channels, including their names and properties.
-
-- sub-xx_ses-xx_task-xx_run-xx_desc-preproc_eeg.fif: This is a file containing preprocessed EEG data in FIF format.
-
-- sub-xx_ses-xx_task-xx_run-xx_desc-preproc_eeg.json: This JSON file describes the parameters in the EEG data.
-
-- sub-xx_ses-xx_task-xx_run-xx_desc-preproc_ica_component.json and sub-xx_ses-xx_task-xx_run-xx_desc-preproc_ica_component.npy: These files contain information and data related to independent component analysis (ICA) components. The .npy file contains all the ICA components in a numpy array, while the .json file contains information about the shape and the excluded components of the ICA components.
+Each participant's folder contains two folders named `ses-LittlePrince` and `ses-GranettDream`, which store the data of this participant reading two novels, respectively. Each of the two folders contains a folder `eeg` and one file `sub-xx_scans.tsv`. The TSV file contains information about the scanning time of each task. The `eeg` folder contains the source raw EEG data of several runs, channels and marker events files. The number of runs depends on how many parts the novel was divided into. Each run includes an `eeg.json` file, which encompasses detailed information for the respective run, such as the sampling rate and the number of channels. Events are stored in `events.tsv` with onset and event ID. The EEG data was converted from raw metafile format (`.mff` file) to BrainVisiondataset format (`.vhdr`}, `.vmrk` and `.eeg` files) using MNE package since EEG-BIDS is not officially compatible with the `.mff`} format.  All data was formatted to EEG-BIDS using the MNE-BIDS package in Python. 
+The `derivatives` folder contains three folders `filtered_0.5_80`, `preproc` and `eyetracking_data`. Their structure is consistent to participants' data folders in the root directory.
+The `filtered_0.5_80` folder contains data that has been processed up to the preprocessing step of 0.5-80Hz band-pass filtering. This data is suitable for researchers who have specific requirements and wish to perform customized processing on subsequent preprocessing steps like ICA and re-referencing. 
+The `preproc` folder contains minimally preprocessed EEG data mentioned in EEG data preprocessing section. It includes four additional types of files compared to the participants' data folders in the root directory. i) `bad_channels.json` contains bad channels marked during bad channel rejection phase. ii) `ica_components.npy` stores the values of all independent components in the ICA phase. iii) `ica_components.json` includes the Independent components excluded in ICA (the ICA random seed is fixed, allowing for reproducible results in each preprocessing session). 4) `ica_components_topography.png` is a topographic map of all independent components, where the excluded components are labeled in grey.
+Besides, the `eyetracker` folder contains the eyetracking data corresponding to each run in the `sub-xx` folder in the root directory. Each eyetracking data is formatted in a `.zip` folder with eye moving trajectories and other parameters like sampling rate saved in different files.
 
 
 
