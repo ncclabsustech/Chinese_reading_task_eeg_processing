@@ -8,7 +8,7 @@ The two core concepts of Docker are `images` and `containers`. A Docker `image` 
 
 Our Docker image [mouxinyu/eeg_dataset](https://hub.docker.com/r/mouxinyu/eeg_dataset) is based on [ubuntu:22.04](https://hub.docker.com/_/ubuntu) and includes project code pulled from [GitHub repositories](https://github.com/ncclabsustech/Chinese_reading_task_eeg_processing). Additionally, the image is configured with [Pycharm](https://www.jetbrains.com/pycharm/download/?section=linux) that supports a graphical user interface, allowing users to operate through the GUI while running the container, avoiding complex command-line editing. The source code of the dockerfile is in `docker` directory.
 
-The following tutorial will detail how to use Docker to apply our image **on the Windows operating system**. The methods for other operating systems will be slightly different and are not elaborated here.
+**The following tutorial will detail how to use Docker to apply our image on the Windows operating system**. The methods for other operating systems will be slightly different and are not elaborated here.
 
 If you want to know more about Docker, you can browse its [official website](https://www.docker.com/).
 

@@ -34,9 +34,9 @@ In the preparation phase of the experiment, we initially fitted participants wit
 
 ![](image/screen.png)
 
-After ensuring the participants fully understood the instructions, we commenced the experimental procedure. Initially, there was an eye tracker calibration phase, followed by a practice reading phase, and finally the formal reading phase. Each formal reading phase lasted for approximately 30 minutes. The experimental setup and procedure are as below:
+After ensuring the participants fully understood the instructions, we commenced the experimental procedure. Initially, there was an eye tracker calibration phase, followed by a practice reading phase, and finally the formal reading phase. Each formal reading phase lasted for approximately 30 minutes. The experimental setup is as below:
 
-![]()
+![](image/exp_layout.png)
 
 ## Credit 
 

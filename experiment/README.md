@@ -165,6 +165,10 @@ height\_degree \ : \ the\ vertical\ scanning\ range\ of\ the\ eyetracking \ came
 
 ## Experiment Procedure
 
+The experimental setup is as below:
+
+![](../image/exp_layout.png)
+
 Below are the operational steps and an example of starting the project from scratch, using the novel *The Little Prince* as an example.
 
 ### Activate Environment
