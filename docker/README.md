@@ -159,21 +159,7 @@ If you are familiar with Linux command line operations, you can also perform cor
 
 ### Mount
 
-After running your code in the container and generating results, you might want to save them to your host machine. To do this, you'll need to utilize Docker's mounting feature. Please copy the files you wish to save to the mount point used within the container when running the `docker run` command (if you followed our earlier recommendation, this mount point should be at `/home/mynewuser/mount`). Then, these files will appear at the designated location on your host machine.
-
-Here is an example of how to copy the results to the host machine.
-
-First, we need to copy the `result` folder from the project directory to the mount point `/home/mynewuser/mount` in the container. This can be done using the Linux `cp` command:
-
-```
-cp -r result /home/mynewuser/mount
-```
-
-![](../image/mount_1.png)
-
-Then check the mount directory on your host machine, you will see the `result` folder.
-
-Similarly, you can place files from the host machine at its mount point, and then access these files at the mount point within the container.
+To exchange files between your host machine and your container, you'll need to utilize Docker's mounting feature. Please write the files you wish to save to the mount point in the container (if you followed our earlier recommendation, this mount point should be at `/home/mynewuser/mount`). Then, these files will appear at the designated location on your host machine. Similarly, you can place files from the host machine at its mount point, and then access these files at the mount point within the container. We highly recommend you to load and write data using the mount feature to avoid issues with memory or other possible problems.
 
 ### Exit
 
