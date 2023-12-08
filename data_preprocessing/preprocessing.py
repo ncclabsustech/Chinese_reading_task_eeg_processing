@@ -76,7 +76,7 @@ def process_single_eeg(eeg_path=None, sub_id='06', ses='LittlePrince',
                        processed_data_root='dataset/derivatives/preproc',
                        dataset_name='Novel Reading',
                        author='Xinyu Mou, Cuilin He, Liwei Tan', line_freq=50,
-                       start_chapter='CH01', low_pass_freq=0.5,
+                       start_chapter=None, low_pass_freq=0.5,
                        high_pass_freq=80, resample_freq=256,
                        remaining_time_at_beginning=10, bad_channels=[], montage_name='GSN-HydroCel-128',
                        ica_method='infomax', ica_n_components=15, rereference='average'):
@@ -120,8 +120,11 @@ def process_single_eeg(eeg_path=None, sub_id='06', ses='LittlePrince',
     raw = raw.interpolate_bads()
 
     # cut data
-    raw, crop_start_time = cut_eeg(raw=raw, start_chapter=start_chapter, remaining_time_at_beginning=remaining_time_at_beginning)
 
+    if start_chapter is not None:
+        raw, crop_start_time = cut_eeg(raw=raw, start_chapter=start_chapter, remaining_time_at_beginning=remaining_time_at_beginning)
+    else:
+        crop_start_time = 0
     print('-------------------- raw cut --------------------')
 
 
