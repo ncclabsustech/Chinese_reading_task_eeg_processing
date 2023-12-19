@@ -76,7 +76,7 @@ If you have already succesfully done that, you can run `PlayNovel.py` to start t
 
 `PlayNovel.py` is used to run the main experiment based on Psychopy. 
 
-![](../image/screen.png)
+![](https://github.com/ncclabsustech/Chinese_reading_task_eeg_processing/blob/main/image/screen.png)
 
 The program includes multiple modes, allowing you to choose whether to connect to the EGI and eye tracker for the experiment. The experimental procedure mainly consists of eye tracker calibration (if the eye tracker mode is selected), practice reading, formal reading, and breaks between chapters. During the reading process, the novel will be presented on the screen with three lines per page, and each line will not exceed ten Chinese characters (excluding punctuation marks). On each page, the middle line will be highlighted as the focal point, while the upper and lower lines will be displayed with reduced intensity as the background. Each character in the middle line will be sequentially highlighted for a certain duration, and participants will be asked to follow the highlighted cues to read the novel content. Various parameters, such as individual character highlight duration, highlight color, etc., can be adjusted by modifying the corresponding settings. 
 
@@ -167,7 +167,7 @@ height\_degree \ : \ the\ vertical\ scanning\ range\ of\ the\ eyetracking \ came
 
 The experimental setup is as below:
 
-![](../image/exp_layout.png)
+![](https://github.com/ncclabsustech/Chinese_reading_task_eeg_processing/blob/main/image/exp_layout.png)
 
 Below are the operational steps and an example of starting the project from scratch, using the novel *The Little Prince* as an example.
 
