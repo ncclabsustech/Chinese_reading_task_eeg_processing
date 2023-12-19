@@ -32,7 +32,7 @@ plt.show()
 ```
 
 The result is shown below：
-![](../image/random_mask1.png)
+![](https://github.com/ncclabsustech/Chinese_reading_task_eeg_processing/blob/main/image/random_mask1.png)
 
 if `same_place=True`, Then all the channels are masked in the same place：
 
@@ -45,12 +45,12 @@ plt.title("mask_rate=0.75, same_place=True")
 plt.show()
 ```
 
-![](../image/random_mask2.png)
+![](https://github.com/ncclabsustech/Chinese_reading_task_eeg_processing/blob/main/image/random_mask2.png)
 
 if `same_place=False`，Then all the channels are **not** masked in the same place：
 
 
-![](../image/random_mask3.png)
+![](https://github.com/ncclabsustech/Chinese_reading_task_eeg_processing/blob/main/image/random_mask3.png)
 
 
 
