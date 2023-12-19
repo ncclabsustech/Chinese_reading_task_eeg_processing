@@ -101,7 +101,7 @@ Our dataset consists of three main parts. The first part is the raw EEG data. Th
 
 The data is formatted under the requirement of the BIDS standard format. The detailed format of our data structure is shown as follows:
 
-![](../image/structure_new.png)
+![](https://github.com/ncclabsustech/Chinese_reading_task_eeg_processing/blob/main/image/structure_new.png)
 
 The dataset is organized following the EEG-BIDS specification, which is an extension to the brain imaging data structure for EEG. The repository contains two regular BIDS files, 10 participants' data folders and a derivatives folder. The stand-alone files offer an overview about the dataset: 
 
@@ -149,26 +149,26 @@ Example Name: subject_04_eeg_01
 
 ICA Example Figure：
 
-![](../image/ica_topo.png)
+![](https://github.com/ncclabsustech/Chinese_reading_task_eeg_processing/blob/main/image/ica_topo.png)
 
 Components to Exclude:
 
 ICA001: This component has local maxima in the frontal area, which is a typical feature of eye blink artifacts.
 
-![](../image/ica_001.png)
+![](https://github.com/ncclabsustech/Chinese_reading_task_eeg_processing/blob/main/image/ica_001.png)
 
 ICA006: This component may represent artifacts of eye movements or eye scanning, as it shows local maxima on the frontal and lateral aspects of the scalp.
 
-![](../image/ica_006.png)
+![](https://github.com/ncclabsustech/Chinese_reading_task_eeg_processing/blob/main/image/ica_006.png)
 
 ICA010: This component may be related to eye movement and electrocardiographic artifacts, as it exhibits local maxima in the frontal region and near the ears.
 
-![](../image/ica_010.png)
+![](https://github.com/ncclabsustech/Chinese_reading_task_eeg_processing/blob/main/image/ica_010.png)
 
 ICA007: This component may be temporally related to electrocardiographic artifacts, as it is characterized by prominent maxima near the ears.
 
-![](../image/ica_007.png)
+![](https://github.com/ncclabsustech/Chinese_reading_task_eeg_processing/blob/main/image/ica_007.png)
 
 ICA015: This component may be temporally related to electrocardiographic artifacts, as it exhibits characteristic maxima at the edges of the scalp.
 
-![](../image/ica_015.png)
+![](https://github.com/ncclabsustech/Chinese_reading_task_eeg_processing/blob/main/image/ica_015.png)
