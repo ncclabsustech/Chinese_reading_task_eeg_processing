@@ -10,7 +10,7 @@ For now, We recruited a total of 10 participants whose native language is Chines
 
 Our EEG recording and pre-processing pipeline is as follows:
 
-![](image/pipeline_english.png)
+![](https://github.com/ncclabsustech/Chinese_reading_task_eeg_processing/blob/main/image/pipeline_english.png)
 
 ## Device
 
