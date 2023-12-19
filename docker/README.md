@@ -48,7 +48,7 @@ Once you have verified that WSL is properly installed, you can proceed with the 
 
 After completing the download steps as instructed in the document, double-click to open Docker Desktop, and you will see the interface as shown in the following image.
 
-![](../image/docker.png)
+![](https://github.com/ncclabsustech/Chinese_reading_task_eeg_processing/blob/main/image/docker.png)
 
 ### VcXsrv Installation
 
@@ -56,11 +56,11 @@ Docker does not provide GUI by default. To address this issue, we need to instal
 
 After downloading, double-click to install it. Once the installation is complete, open VcXsrv (named Xlaunch after installation) from the start menu. If it's not found in the start menu, you can use the search function to locate it. Upon opening, a settings page will appear.
 
-![](../image/vcxsrv_1.png)
+![](https://github.com/ncclabsustech/Chinese_reading_task_eeg_processing/blob/main/image/vcxsrv_1.png)
 
 Simply keep the default settings and click 'Next' until you reach the end, and then click 'Finish' to start VcXsrv. After it starts, you can see the following icon in the dock, indicating a successful launch.
 
-![](../image/vcxsrv_2.png)
+![](https://github.com/ncclabsustech/Chinese_reading_task_eeg_processing/blob/main/image/vcxsrv_2.png)
 
 ### Image Pulling
 
@@ -74,7 +74,7 @@ docker pull mouxinyu/eeg_dataset
 
 After you enter this command and press the enter key to execute it. If you see the following response in the command line interface, the image is successfully pulled:
 
-![](../image/image.png)
+![](https://github.com/ncclabsustech/Chinese_reading_task_eeg_processing/blob/main/image/image.png)
 
 ### Run Container
 
@@ -90,7 +90,7 @@ The explanation of the relevant parameters is as follows:
 - -it: This command runs the container in interactive mode and allocates a pseudo terminal for the container.
 - -v: This command mounts a file system address from the host machine to a corresponding address inside the container, allowing file exchange between the container and the host machine. `:` is used to separate the paths on the two systems, with the left side being the path on the host machine and the right side the path within the container, which is recommended to be set as `/home/mynewuser/mount`.
 
-![](../image/docker_run.png)
+![](https://github.com/ncclabsustech/Chinese_reading_task_eeg_processing/blob/main/image/docker_run.png)
 
 The container by default has two users, one is the `root` user, and the other is a user named `mynewuser`. When entering the container, by default, you are in the `/opt/pycharm/bin` directory under the `root` user.
 
@@ -100,7 +100,7 @@ We recommend that you switch to user `mynewuser` for most operations, and you ca
 su mynewuser
 ```
 
-![](../image/su.png)
+![](https://github.com/ncclabsustech/Chinese_reading_task_eeg_processing/blob/main/image/su.png)
 
 #### GUI 
 
@@ -112,33 +112,33 @@ sh pycharm.sh
 
 If you successfully run the GUI, the following interface will appear:
 
-![](../image/pycharm_1.png)
+![](https://github.com/ncclabsustech/Chinese_reading_task_eeg_processing/blob/main/image/pycharm_1.png)
 
 Confirm the user agreement and enter the pycharm interface:
 
-![](../image/pycharm_2.png)
+![](https://github.com/ncclabsustech/Chinese_reading_task_eeg_processing/blob/main/image/pycharm_2.png)
 
 Select the 'Open' option in the middle part, and choose `home/mynewuser/Chinese_reading_task_eeg_processing` to open the project.
 
-![](../image/pycharm_3.png)
+![](https://github.com/ncclabsustech/Chinese_reading_task_eeg_processing/blob/main/image/pycharm_3.png)
 
 Here, select 'Trust Project' to open the project.
 
-![](../image/pycharm_4.png)
+![](https://github.com/ncclabsustech/Chinese_reading_task_eeg_processing/blob/main/image/pycharm_4.png)
 
 Typically, Pycharm will automatically detect the virtual environment `eeg_dataset_env` in the project folder and configure it automatically (this may take some time if it's your first time setting up this environment). However, if Pycharm does not automatically recognize the environment, you can manually configure it using the steps below:
 
 Click on the bottom right area of the Pycharm page, and select `Add New Interpreter --> Add Local Interpreter` .
 
-![](../image/pycharm_5.png)
+![](https://github.com/ncclabsustech/Chinese_reading_task_eeg_processing/blob/main/image/pycharm_5.png)
 
 In the PyCharm settings interface, select `Virtualenv Environment` from the sidebar on the left. Then in the `Environment` section, choose the `Existing` option to specify a pre-existing environment.
 
-![](../image/pycharm_6.png)
+![](https://github.com/ncclabsustech/Chinese_reading_task_eeg_processing/blob/main/image/pycharm_6.png)
 
 Then select `/home/mynewuser/Chinese_reading_task_eeg_processing/eeg_dataset_env/bin/python3.10` as the interpreter. Press `OK` to configure the environment.
 
-![](../image/pycharm_7.png)
+![](https://github.com/ncclabsustech/Chinese_reading_task_eeg_processing/blob/main/image/pycharm_7.png)
 
 Now, you can edit and run code within PyCharm.
 
@@ -165,7 +165,7 @@ To exchange files between your host machine and your container, you'll need to u
 
 We can switch back from the `mynewuser` user to the `root` user using the `exit` command, and similarly, we can exit the container by using the `exit` command while in the `root` user.
 
-![](../image/exit.png)
+![](https://github.com/ncclabsustech/Chinese_reading_task_eeg_processing/blob/main/image/exit.png)
 
 ### Other Docker Command
 
@@ -177,7 +177,7 @@ docker ps -a
 
 This command will show all containers, including these stopped ones.
 
-![](../image/ps.png)
+![](https://github.com/ncclabsustech/Chinese_reading_task_eeg_processing/blob/main/image/ps.png)
 
 Next, use the following command to start a stopped container and enter its command line interface:
 
@@ -186,7 +186,7 @@ docker start eeg_dataset_container
 docker exec -it eeg_dataset_container /bin/bash
 ```
 
-![](../image/restart.png)
+![](https://github.com/ncclabsustech/Chinese_reading_task_eeg_processing/blob/main/image/restart.png)
 
 ### Caveat
 
