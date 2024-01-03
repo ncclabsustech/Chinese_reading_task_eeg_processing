@@ -38,6 +38,57 @@ After ensuring the participants fully understood the instructions, we commenced 
 
 ![](https://github.com/ncclabsustech/Chinese_reading_task_eeg_processing/blob/main/image/exp_layout.png)
 
+## Usage
+
+Typically, you can follow steps below to execute the code for preparing experimental materials, conducting the experiment, and carrying out subsequent data analysis.
+
+### Environment Settings
+
+Firstly, please ensure that your code running environment is properly set up. You have the option to create a Docker container for this purpose or directly install the necessary packages on your personal computer. 
+
+If you choose to use Docker, you can refer to the detailed tutorial provided [here](https://github.com/ncclabsustech/Chinese_reading_task_eeg_processing/blob/main/docker/README.md). If you plan to install the packages in your local environment, the required packages and their corresponding version information can be found in the [requirement.txt](https://github.com/ncclabsustech/Chinese_reading_task_eeg_processing/blob/main/requirements.txt) file located in the project's root directory.
+
+### Experiment Materials Preparation
+
+This step primarily involves preparing the textual reading materials needed for the experiment. You need to first convert your materials into the specific format below:
+
+```
+Chinese_novel.txt
+Ch0
+This is the preface of the novel
+Ch1
+Chapter 1 of the novel
+Ch2
+Chapter 2 of the novel
+...
+...
+...
+```
+
+then run the `cut_Chinese_novel.py` script located in the `novel_segmentation` folder to perform sentence segmentation of the novel text:
+
+```
+python cut_Chinese_novel.py --divide_nums=<chapter numbers of the cutting point> --Chinese_novel_path=<path to your .txt file of the novel>
+```
+
+For detailed information on format requirements and script execution commands, please visit the [novel_segmentation](https://github.com/ncclabsustech/Chinese_reading_task_eeg_processing/tree/main/novel_segmentation) module for more details.
+
+### Experiment
+
+Once we have obtained the text materials cut into the specific format, we can run the experimental program using `play_novel.py` in the `experiment` module. This program will present these text materials according to a specific experimental paradigm and record the participants' EEG and eye movement data. Before running the program, please ensure that the path to the text materials is correctly set and that the EEG and eye-tracking devices are properly connected. Use the following command to run the program:
+
+```
+python play_novel.py --add_mark --add_eyetracker  --preface_path=<your preface path> --host_IP=<host IP> --egi_IP=<egi IP> --eyetracker_hostname=<eyetracker serial number> --novel_path=<your novel path> --isFirstSession
+```
+
+For detailed information on the specific experimental paradigm, related parameter settings, and more, please refer to the [experiment](https://github.com/ncclabsustech/Chinese_reading_task_eeg_processing/tree/main/experiment) module for further details.
+
+### Data Pre-processing
+
+After completing the experimental data collection for all participants, we can use the `preprocessing.py` in the `data_preprocessing` module for data preprocessing. Our preprocessing workflow includes a series of steps such as data segmentation, downsampling, filtering, bad channel interpolation, independent component analysis (ICA), and re-referencing. During the bad channel interpolation and ICA phases, we have implemented automated algorithms, but we also provide options for manual intervention to ensure accuracy. All parameters for these methods can be modified by adjusting the settings in the code. 
+
+For detailed information on the preprocessing workflow, explanations of the code, and parameter settings, please refer to the [data_preprocessing](https://github.com/ncclabsustech/Chinese_reading_task_eeg_processing/tree/main/data_preprocessing) module for more information.
+
 ## Credit 
 
 - [Mou Xinyu](https://github.com/12485953) - Coder for all parts of the project, Data processing, README writer for all parts.

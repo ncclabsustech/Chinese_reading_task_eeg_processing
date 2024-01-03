@@ -65,5 +65,13 @@ We provide a `.txt` file of the novel *The Little Prince* and the 5 processed `.
 | divide_nums        | str  | Breakpoints which you want to divide your novel (comma-separated). e.g. If you want to break the novel from chapter 8, 16, 24, you should pass the argument as --divide_nums=8,16,24 |
 | Chinese_novel_path | str  | Path to your `.txt` Chinese novel content                    |
 
+#### Running
+
+You can run this code using the following command:
+
+```
+python cut_Chinese_novel.py --divide_nums=<chapter numbers of the cutting point> --Chinese_novel_path=<path to your .txt file of the novel>
+```
+
 
 

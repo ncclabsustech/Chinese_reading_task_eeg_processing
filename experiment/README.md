@@ -194,7 +194,7 @@ python cut_Chinese_novel.py --divide_num=8,16,24 --Chinese_novel_path=xiaowangzi
 - Next, adjust the parameters and run the main program. Set the addresses for the main body and preface parts in the variables `novel_path` and `preface_path`, respectively. Adjust the parameters `add_mark` and `add_eyetracker` to decide whether to connect to the EGI and eye tracker. Change `host_IP`, `egi_IP`, and `eyetracker_hostname` to the IP numbers of your own devices. Set `isFirstSession` to True during the first run to include the preview session. Other adjustable parameters can be found in the "Parameters" section of the Code Explanation under Main Experiment. Note that you may need to modify some size and distance-related parameters according to your own setup. In subsequent runs, change the `novel_path` to read different parts of the novel and set `isFirstSession` to False.
 
 ```
-python PlayNovel.py --add_mark --add_eyetracker  --preface_path=<your preface path> --host_IP=<host IP> --egi_IP=<egi IP> --eyetracker_hostname=<eyetracker serial number> --novel_path=<your novel path> --isFirstSession
+python play_novel.py --add_mark --add_eyetracker  --preface_path=<your preface path> --host_IP=<host IP> --egi_IP=<egi IP> --eyetracker_hostname=<eyetracker serial number> --novel_path=<your novel path> --isFirstSession
 ```
 
 ​		Here is our own settings as an example:

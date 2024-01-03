@@ -3,7 +3,7 @@ import numpy as np
 import openpyxl
 import csv
 
-def read_eeg(eeg_path, montage_name='GSN-HydroCel-128'):
+def read_eeg_brainvision(eeg_path, montage_name='GSN-HydroCel-128'):
     eeg = mne.io.read_raw_brainvision(eeg_path)
     events = []
     event_id = {}
@@ -42,7 +42,7 @@ def align_eeg_with_sentence(eeg_path, novel_path, start_index, end_index, montag
     :return:
     '''
 
-    eeg, events, event_id = read_eeg(eeg_path, montage_name)
+    eeg, events, event_id = read_eeg_brainvision(eeg_path, montage_name)
 
 
 
