@@ -373,6 +373,8 @@ if __name__ == '__main__':
     
     parser.add_argument('--Chinese_novel_path', type=str, default=r'../data/novel/xiaowangzi_main_text.txt', help='Path to your .txt Chinese novel content')
     parser.add_argument('--divide_nums', type=str, default='4, 8, 12, 16, 20, 24', help='Breakpoints which you want to divide your novel (comma-separated)')
+    parser.add_argument('--save_path', type=str, default=r'../data/segmented_novel',
+                        help='Path to save the outputs')
     args = parser.parse_args()
 
     divide_num_list = args.divide_nums.split(',')
@@ -397,13 +399,13 @@ if __name__ == '__main__':
         preface_text, preface_indexes, preface_main_row, preface_row_num = arrange_sentences_in_psychopy_requirement(
             preface)
 
-        save_to_xlsx(r'../data/segmented_novel', r'/segmented_Chinense_novel_preface_display.xlsx', preface_text,
+        save_to_xlsx(args.save_path, r'/segmented_Chinense_novel_preface_display.xlsx', preface_text,
                      preface_indexes, preface_main_row, preface_row_num)
 
         for i, main_content_part in enumerate(main_content_parts):
             text, indexes, main_row, row_num = arrange_sentences_in_psychopy_requirement(main_content_part)
             file_name = r'/segmented_Chinense_novel_run_' + str(round(i + 1)) + '_display.xlsx'
-            save_to_xlsx(r'../data/segmented_novel', file_name, text, indexes, main_row, row_num)
+            save_to_xlsx(args.save_path, file_name, text, indexes, main_row, row_num)
 
 
 
@@ -416,17 +418,17 @@ if __name__ == '__main__':
                 result_without_punc.append(row)
 
 
-        save_to_xlsx(r'../data/segmented_novel', r'/segmented_Chinense_novel.xlsx', result_without_punc[1:])
+        save_to_xlsx(args.save_path, r'/segmented_Chinense_novel.xlsx', result_without_punc[1:])
 
         preface_without_punc, main_content_parts_without_punc = split_preface_main_content(result_without_punc, args.divide_nums)
 
 
 
-        save_to_xlsx(r'../data/segmented_novel', r'/segmented_Chinense_novel_preface.xlsx', preface_without_punc)
+        save_to_xlsx(args.save_path, r'/segmented_Chinense_novel_preface.xlsx', preface_without_punc)
 
         for i, content_without_punc in enumerate(main_content_parts_without_punc):
             filename = r'/segmented_Chinense_novel_run_' + str(i+1) + '.xlsx'
-            save_to_xlsx(r'../data/segmented_novel', filename, content_without_punc)
+            save_to_xlsx(args.save_path, filename, content_without_punc)
 
 
 
