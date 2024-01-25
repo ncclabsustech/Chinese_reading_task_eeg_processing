@@ -390,18 +390,30 @@ if __name__ == '__main__':
         result = arrange_sentences_within_30_words(result)
         result = split_row(result)
 
+
         save_to_xlsx(r'../data/segmented_novel', r'/segmented_Chinense_novel.xlsx', result[1:])
 
         preface, main_content_parts = split_preface_main_content(result, args.divide_nums)
 
 
 
+        save_to_xlsx(r'../data/segmented_novel', r'/segmented_Chinense_novel_preface.xlsx', preface)
+
+        for i, content in enumerate(main_content_parts):
+            filename = r'/segmented_Chinense_novel_run_' + str(i+1) + '.xlsx'
+            save_to_xlsx(r'../data/segmented_novel', filename, content)
+
+
+
+
+
         preface_text, preface_indexes, preface_main_row, preface_row_num = arrange_sentences_in_psychopy_requirement(
             preface)
 
-        save_to_xlsx(r'../data/segmented_novel', r'/segmented_Chinense_novel_preface.xlsx', preface_text, preface_indexes, preface_main_row, preface_row_num)
+        save_to_xlsx(r'../data/segmented_novel', r'/segmented_Chinense_novel_preface_display.xlsx', preface_text, preface_indexes, preface_main_row, preface_row_num)
+
 
         for i, main_content_part in enumerate(main_content_parts):
             text, indexes, main_row, row_num = arrange_sentences_in_psychopy_requirement(main_content_part)
-            file_name = r'/segmented_Chinense_novel_main_' + str(round(i+1)) + '.xlsx'
+            file_name = r'/segmented_Chinense_novel_run_' + str(round(i+1)) + '_display.xlsx'
             save_to_xlsx(r'../data/segmented_novel', file_name, text, indexes, main_row, row_num)
