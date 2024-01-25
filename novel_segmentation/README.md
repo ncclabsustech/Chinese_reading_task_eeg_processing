@@ -42,21 +42,13 @@ In real experiments, considering issues like eye tracker battery life, we must p
 
 In this script, you can specify the chapters you want to divide the novel by changing parameter `divide_num` , and the program will divide the chapters and output the  files containing these different parts.
 
-The output files are as follows:
+The outputs have three different types of data files:
 
-`segmented_Chinese_novel_preface.xlsx`: The processed preface of the novel.
+- The first type of file contains one specific file that contains the entire content of the novel. Its contents are divided according to each line as it is displayed. This file is named `segmented_Chinese_novel.xlsx`. 
+- The second type of file contains the content of each trial (i.e., the specified chapter played during one session), also divided according to each line as displayed, and these files are named `segmented_Chinese_novel_run_xx.xlsx`, where xx is the specific number of the run.
+-  The third type of file is a specialized file used for projecting the content on the screen. It directly corresponds to the second type of file, with each file in the third type being a transformation of the second type. The primary purpose of these files is to present content on the screen via the Psychopy program, hence we add “display” at the end of the file name in the second type to denote this distinction. The format is like `segmented_Chinese_novel_run_xx_display.xlsx` 
 
-`segmented_Chinese_novel_main_1.xlsx`: The processed main body of the novel content.
-
-`segmented_Chinese_novel_main_2.xlsx`: The processed main body of the novel content.
-
-... 
-
-(number of files depends on your setting)
-
-
-
-We provide a `.txt` file of the novel *The Little Prince* and the 5 processed `.xlsx` files as an example. 
+We provide a `.txt` file of the novel *The Little Prince* and the processed `.xlsx` files as an example. 
 
 #### Parameters
 

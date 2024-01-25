@@ -1874,9 +1874,9 @@ if __name__ == '__main__':
     parser.add_argument('--egi_IP', type=str, default='10.10.10.51', help='The IP of the egi device')
     parser.add_argument('--eyetracker_hostname', type=str, default="TG03B-080202024891",
                         help='The serial number of the eyetracker')
-    parser.add_argument('--novel_path', type=str, default=r"../data/segmented_novel/segmented_Chinense_novel_main_1.xlsx",
+    parser.add_argument('--novel_path', type=str, default=r"../data/segmented_novel/segmented_Chinense_novel_run_1_display.xlsx",
                         help='The path of the  .xlsx format novel you want to play')
-    parser.add_argument('--preface_path', type=str, default=r"../data/segmented_novel/segmented_Chinense_novel_preface.xlsx",
+    parser.add_argument('--preface_path', type=str, default=r"../data/segmented_novel/segmented_Chinense_novel_preface_display.xlsx",
                         help='The path of the  .xlsx format preface you want to play')
     parser.add_argument('--fullscreen', type=bool, default=True,
                         help='Whether to set a full screen')

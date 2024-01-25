@@ -201,10 +201,10 @@ python play_novel.py --add_mark --add_eyetracker  --preface_path=<your preface p
 
 ```
 First time:
-python PlayNovel.py --add_mark --add_eyetracker  --preface_path=segmented_Chinense_novel_preface.xlsx --host_IP=10.10.10.42 --egi_IP=10.10.10.51 --eyetracker_hostname=TG03B-080202024891 --novel_path=segmented_Chinense_novel_main_1.xlsx --isFirstSession
+python PlayNovel.py --add_mark --add_eyetracker  --preface_path=segmented_Chinense_novel_preface_display.xlsx --host_IP=10.10.10.42 --egi_IP=10.10.10.51 --eyetracker_hostname=TG03B-080202024891 --novel_path=segmented_Chinense_novel_run_1_display.xlsx --isFirstSession
 
 Second time:
-python PlayNovel.py --add_mark --add_eyetracker  --preface_path=segmented_Chinense_novel_preface.xlsx --host_IP=10.10.10.42 --egi_IP=10.10.10.51 --eyetracker_hostname=TG03B-080202024891 --novel_path=segmented_Chinense_novel_main_2.xlsx
+python PlayNovel.py --add_mark --add_eyetracker  --preface_path=segmented_Chinense_novel_preface_display.xlsx --host_IP=10.10.10.42 --egi_IP=10.10.10.51 --eyetracker_hostname=TG03B-080202024891 --novel_path=segmented_Chinense_novel_run_2_display.xlsx
 
 ...
 ```
