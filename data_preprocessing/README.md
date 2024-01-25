@@ -172,3 +172,9 @@ ICA007: This component may be temporally related to electrocardiographic artifac
 ICA015: This component may be temporally related to electrocardiographic artifacts, as it exhibits characteristic maxima at the edges of the scalp.
 
 ![](https://github.com/ncclabsustech/Chinese_reading_task_eeg_processing/blob/main/image/ica_015.png)
+
+## Data Alignment
+
+Here we offer the script `align_eeg_with_sentence.py` to get the EEG  and its aligned texts and text embeddings. You just need to assign the three parameters:
+
+ 
