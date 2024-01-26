@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This project aims to provide a comprehensive paradigm for the establishment of an EEG dataset based on Chinese linguistic corpus. It seeks to facilitate the advancement of technologies related to EEG-based semantic decoding and brain-computer interfaces. The project is currently divided into the following modules: Chinese corpus segmentation, experimental design and stimulus presentation, data preprocessing, and data masking. For detailed information on each module, please refer to the README document in the respective folders or view the relevant code.
+This project aims to provide a comprehensive paradigm for the establishment of an EEG dataset based on Chinese linguistic corpus. It seeks to facilitate the advancement of technologies related to EEG-based semantic decoding and brain-computer interfaces. The project is currently divided into the following modules: Chinese corpus segmentation and text embeddings, experimental design and stimulus presentation, data preprocessing, and data masking. For detailed information on each module, please refer to the README document in the respective folders or view the relevant code.
 
 For now, We recruited a total of 10 participants whose native language is Chinese. Each participant fully engaged in a Chinese novel reading task with a total duration of 12 hours, collectively accumulating 120 hours of data.
 
@@ -71,7 +71,7 @@ then run the `cut_Chinese_novel.py` script located in the `novel_segmentation` f
 python cut_Chinese_novel.py --divide_nums=<chapter numbers of the cutting point> --Chinese_novel_path=<path to your .txt file of the novel>
 ```
 
-For detailed information on format requirements and script execution commands, please visit the [novel_segmentation](https://github.com/ncclabsustech/Chinese_reading_task_eeg_processing/tree/main/novel_segmentation) module for more details.
+For detailed information on format requirements and script execution commands, please visit the [novel_segmentation_and_text_embeddings](https://github.com/ncclabsustech/Chinese_reading_task_eeg_processing/tree/main/novel_segmentation_and_text_embeddings) module for more details.
 
 ### Experiment
 
@@ -87,7 +87,15 @@ For detailed information on the specific experimental paradigm, related paramete
 
 After completing the experimental data collection for all participants, we can use the `preprocessing.py` in the `data_preprocessing` module for data preprocessing. Our preprocessing workflow includes a series of steps such as data segmentation, downsampling, filtering, bad channel interpolation, independent component analysis (ICA), and re-referencing. During the bad channel interpolation and ICA phases, we have implemented automated algorithms, but we also provide options for manual intervention to ensure accuracy. All parameters for these methods can be modified by adjusting the settings in the code. 
 
-For detailed information on the preprocessing workflow, explanations of the code, and parameter settings, please refer to the [data_preprocessing](https://github.com/ncclabsustech/Chinese_reading_task_eeg_processing/tree/main/data_preprocessing) module for more information.
+For detailed information on the preprocessing workflow, explanations of the code, and parameter settings, please refer to the [data_preprocessing](https://github.com/ncclabsustech/Chinese_reading_task_eeg_processing/tree/main/data_preprocessing) module.
+
+### Text Embeddings
+
+We offer the embeddings of the reading materials. The text stimuli in each run has a corresponding embedding file saved in `.npy` format. These text embeddings provide a foundation for a series of subsequent studies, including the alignment analysis of EEG and textual data in the representation space, as well as tasks like EEG language decoding. For detailed information, please refer to the [novel_segmentation_and_text_embeddings](https://github.com/ncclabsustech/Chinese_reading_task_eeg_processing/tree/main/novel_segmentation_and_text_embeddings) module.
+
+### Data Alignment
+
+After you have your texts, text embeddings and runs of EEG data, you can align them to do subsequent analysis. We offer you code to align the EEG data to its corresponding texts and embeddings. For detailed information, please refer to the [data_preprocessing_and_alignment](https://github.com/ncclabsustech/Chinese_reading_task_eeg_processing/tree/main/data_preprocessing_and_alignment) module.
 
 ## Credit 
 

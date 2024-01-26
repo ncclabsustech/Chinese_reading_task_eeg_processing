@@ -1,8 +1,8 @@
-# Chinese language corpus segmentation 
+# Chinese Language Corpus Segmentation and Text Embeddings
 
 ## Introduction
 
-This README file aims to illustrate how to segment Chinese novel using our code.
+This README file aims to illustrate how to segment Chinese novel and get their text embeddings using pretrained language models.
 
 ## Environment
 
@@ -12,7 +12,19 @@ We use `xlsx` files to save our segmented novel. We use the package `openpyxl` t
 pip install openpyxl
 ```
 
-## Code Explanation
+Also we need packages for deep learning and pretrained language models. So pytorch and Transformers packages are needed.
+
+```
+pip install pytorch
+```
+
+```
+pip install transformers
+```
+
+## Explanation
+
+### Novel Segmentation
 
 You should run `cut_Chinese_novel.py` to process your `.txt` formated Chinese novel for sentence segmentation, obtaining the corresponding formatted `.xlsx` files. 
 
@@ -66,5 +78,16 @@ You can run this code using the following command:
 python cut_Chinese_novel.py --divide_nums=<chapter numbers of the cutting point> --Chinese_novel_path=<path to your .txt file of the novel> --save_path=<path to save the outputs>
 ```
 
+### Text Embeddings
 
+We offer the code `embedding.py` used to generate the text embeddings. We have employed a deep learning-based pretrained language model to calculate text embeddings. The pretrained model we use is [bert-base-chinese](https://huggingface.co/bert-base-chinese). Specifically, we process each line of text in the textual stimuli to generate text embeddings of uniform length. These embeddings are organized by individual run in the experiment and are saved in the `.npy` format. Consequently, each `.npy` file of text embeddings corresponds to the embeddings of each line of textual stimuli in a single run. You should pass the path to your text files with `.xlsx` format in all runs  as inputs (that is the output path of your novel segmentation in the above section). 
 
+We have already calculate embeddings of the two novels we use. They are offered in `derivatives/text_embeddings` in the dataset. You can use them directly to do subsequent analysis including alignment of EEG and text in representation space and EEG semantic decoding. **Notice: Due to special circumstances during the experimental process, subject-07 in the LangWangMeng session did not read the content of Chapter 18 as intended in the 18th run. Instead, as a substitute, the participant read the content of Chapter 19. Therefore, in this specific case, there is no direct correspondence between the EEG data in the 18th run and the 18th text embedding file. **
+
+#### Running
+
+| Parameter          | type | usage                                                        |
+| ------------------ | ---- | ------------------------------------------------------------ |
+| Chinese_novel_path | str  | Path to the folder that contains texts stimuli in each run   |
+| run_num            | int  | The number of the runs in the experiment (that is the number of texts stimuli files) |
+| save_path          | str  | Path to save the embeddings                                  |
