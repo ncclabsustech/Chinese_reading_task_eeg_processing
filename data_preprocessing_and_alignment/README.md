@@ -19,7 +19,7 @@ Before we do ICA, we will first follow some basic steps, including down-sampling
 
 #### Filtering
 
-We will filter the data using a band pass filter to remove artifact. In our processing, we set the pass band to 0.5-80 Hz
+We will filter the data using a band pass filter to remove artifact. In our processing, we do two versions of filtering, with one pass band set to 0.5-80 Hz and the other set to 0.5-30 Hz.
 
 #### Bad Channel Interpolation and Bad Segment Mask
 
