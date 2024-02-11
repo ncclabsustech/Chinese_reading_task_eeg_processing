@@ -2,9 +2,15 @@
 
 ## Introduction
 
-This project aims to provide a comprehensive paradigm for the establishment of an EEG dataset based on Chinese linguistic corpus. It seeks to facilitate the advancement of technologies related to EEG-based semantic decoding and brain-computer interfaces. The project is currently divided into the following modules: Chinese corpus segmentation and text embeddings, experimental design and stimulus presentation, data preprocessing, and data masking. For detailed information on each module, please refer to the README document in the respective folders or view the relevant code.
+An Electroencephalography (EEG) dataset utilizing rich text stimuli can advance the understanding of how the brain encodes semantic information and contribute to semantic decoding in brain-computer interface (BCI). Addressing the scarcity of EEG datasets featuring Chinese linguistic stimuli, we present the ChineseEEG dataset, a high-density EEG dataset complemented by simultaneous eye-tracking recordings. This dataset was compiled while 10 participants silently read approximately 11 hours of Chinese text from two well-known novels. This dataset provides long-duration EEG recordings, along with pre-processed EEG sensor-level data and semantic embeddings of reading materials extracted by a pre-trained natural language processing (NLP) model. 
 
-For now, We recruited a total of 10 participants whose native language is Chinese. Each participant fully engaged in a Chinese novel reading task with a total duration of 12 hours, collectively accumulating 120 hours of data.
+**For more detailed information about our dataset, you can reach our preprint paper on bioRxiv: [ChineseEEG: A Chinese Linguistic Corpora EEG Dataset for Semantic Alignment and Neural Decoding](https://www.biorxiv.org/content/10.1101/2024.02.08.579481v1).**
+
+**You can find the dataset via the ChineseNeuro Symphony community (CHNNeuro) in Science Data Bank platform ([https://doi.org/10.57760/sciencedb.CHNNeuro.00007](https://doi.org/10.57760/sciencedb.CHNNeuro.00007)) or via Openneuro ([https://openneuro.org/datasets/ds004952](https://openneuro.org/datasets/ds004952)).**
+
+This repository contains all the code to reproduce the experiment and data processing procedure in our paper. It aims to provide a comprehensive paradigm for the establishment of an EEG dataset based on Chinese linguistic corpora. It seeks to facilitate the advancement of technologies related to EEG-based semantic decoding and brain-computer interfaces. 
+
+The project is mainly divided into four modules. The script `cut_chinese_novel.py` in the `novel_segmentation_and_text_embeddings` folder contains the code to prepare the stimulation materials from source materials. The script `play_novel.py` in the experiment module contains code for the experiment, including text stimuli presentation and control of the EGI device and Tobii Glasses 3 eye-tracker. The script `preprocessing.py` in `data_preprocessing_and_alignment` module contains the main part of the code to apply pre-processing on EEG data. The script `align_eeg_with_sentence.py` in the same module contains code to align the EEG segments with corresponding text contents and text embeddings. The `docker` module contains the Docker image required for deploying and running the code, as well as tutorials on how to use Docker for environment deployment. For detailed information on each module, please refer to the README document in the respective module.
 
 ## Pipeline
 
@@ -99,11 +105,11 @@ After you have your texts, text embeddings and runs of EEG data, you can align t
 
 ## Credit 
 
-- [Mou Xinyu](https://github.com/12485953) - Coder for all parts of the project, Data processing, README writer for all parts.
+- [Mou Xinyu](https://github.com/12485953) - Coder for all parts of the project, Data processing.
 
-- [He Cuilin](https://github.com/CuilinHe) - Experiment conductor, Data processing, README writing.
+- [He Cuilin](https://github.com/CuilinHe) - Experiment conductor, Data processing.
 
-- [Tan Liwei](https://github.com/tanliwei09) - Experiment conductor, Data processing, README writing.
+- [Tan Liwei](https://github.com/tanliwei09) - Experiment conductor, Data processing.
 
 - [Zhang Jianyu](https://github.com/ionaaaa) - Coder for Chinese corpus segmentation and EEG random masking.
   
@@ -114,26 +120,25 @@ After you have your texts, text embeddings and runs of EEG data, you can align t
   Feel free to contact us if you have any questions about the project !!!
   
 ## Collaborators
-- [Wu Haiyan](https://github.com/haiyan0305)  -  澳门大学
+- [Wu Haiyan](https://github.com/haiyan0305)  -  University of Macau
 
-- [Liu Quanying] - 南方科技大学
+- [Liu Quanying] - Southern University of Science and Technology
   
 - [Wang Xindi](https://github.com/sandywang) 
 
-- [Wang Qing] - 上海精神卫生中心
+- [Wang Qing] - Shanghai Jiao Tong University
   
 - [Chen Zijiao] - National University of Singapore
   
 - [Yang Yu-Fang] - Freie Universität Berlin
   
-- [Hu Chuanpeng] - 南京师范大学
+- [Hu Chuanpeng] - Nanjing Normal University
   
-- [Xu Ting] - Child Mind Institute
+- [Xu Ting] - Center for the Integrative Developmental Neuroscience, Child Mind Institute, New York
 
-- [Cao Miao] - 北京大学
+- [Cao Miao] - Swinburne University of Technology
 
-- [Liang Huadong](https://github.com/Romantic-Pumpkin) - 科大讯飞股份有限公司
+- [Liang Huadong](https://github.com/Romantic-Pumpkin) - iFLYTEK Co., LTD
 ## Funding
 
-本项目受到天桥脑科学研究院MindX数据支持计划的部分资助（共计伍万元）。
-其余资助来源:澳门科学技术发展基金项目(FDCT)
+This work was mainly supported by the MindD project of Tianqiao and Chrissy Chen Institute(TCCI), the Science and Technology Development Fund (FDCT) of Macau [0127/2020/A3, 0041/2022/A], the Natural Science Foundation of Guangdong Province(2021A1515012509), Shenzhen-Hong Kong-Macao Science and Technology Innovation Project (Category C) (SGDX2020110309280100), and the SRG of University of Macau (SRG2020-00027-ICI). We also thank all research assistants who provided general support in participant recruiting and data collection.
