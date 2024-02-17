@@ -77,6 +77,8 @@ then run the `cut_Chinese_novel.py` script located in the `novel_segmentation` f
 python cut_Chinese_novel.py --divide_nums=<chapter numbers of the cutting point> --Chinese_novel_path=<path to your .txt file of the novel>
 ```
 
+We have uploaded the text materials we use in our experiment to the `text materials` release, including the Chinese versions of two well-known novels, **The Little Prince** and **Garnett Dream**.
+
 For detailed information on format requirements and script execution commands, please visit the [novel_segmentation_and_text_embeddings](https://github.com/ncclabsustech/Chinese_reading_task_eeg_processing/tree/main/novel_segmentation_and_text_embeddings) module for more details.
 
 ### Experiment
