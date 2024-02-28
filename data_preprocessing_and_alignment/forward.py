@@ -36,8 +36,8 @@ def forward_solution(eeg_path, save_fwd_path):
 
 
 parser = argparse.ArgumentParser(description='Parameters that can be changed in this experiment')
-parser.add_argument('--eeg_path', type=str, default=r'D:\牟新语的文件夹\科大讯飞实习\项目内容\EEG预训练+语言解码项目\数据处理\数据处理前五个\text embedding\example_eeg_and_embedding\一顶帽子怎么会吓人呢\80hz\example_eeg.fif')
-parser.add_argument('--save_fwd_path', type=str, default=r'D:\牟新语的文件夹\科大讯飞实习\项目内容\EEG预训练+语言解码项目\数据处理\数据处理前五个\text embedding\example_eeg_and_embedding\一顶帽子怎么会吓人呢\80hz\example_eeg-fwd.fif')
+parser.add_argument('--eeg_path', type=str, default=r'example_eeg.fif')
+parser.add_argument('--save_fwd_path', type=str, default=r'example_eeg-fwd.fif')
 
 args = parser.parse_args()
 
