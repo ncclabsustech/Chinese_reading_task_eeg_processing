@@ -9,9 +9,9 @@ os.environ['CURL_CA_BUNDLE'] = ''
 
 from transformers import AutoTokenizer, AutoModelForMaskedLM
 
-#加载预训练字典和分词方法
+# Load the pre-trained dictionary and tokenization method
 tokenizer = BertTokenizer.from_pretrained(
-    pretrained_model_name_or_path='bert-base-chinese',  # 可选，huggingface 中的预训练模型名称或路径，默认为 bert-base-chinese
+    pretrained_model_name_or_path='bert-base-chinese',
 )
 
 model = AutoModelForMaskedLM.from_pretrained("bert-base-chinese")

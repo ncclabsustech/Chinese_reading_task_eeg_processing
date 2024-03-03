@@ -72,12 +72,12 @@ def inverse_solution(eeg_path, fname_fwd, inverse_method="dSPM", snr=3.0, hemi="
         hemi=hemi,
         subjects_dir=subjects_dir,
         clim=dict(kind="value", lims=clim),
-        background=(1, 1, 1),   # 背景颜色: (1, 1, 1)为纯白
+        background=(1, 1, 1),   # background color: (1, 1, 1) --> white
         initial_time=initial_time,
         time_unit="s",
         size=(800, 800),
         smoothing_steps=10,
-        surface='white',  # 指定是否呈现沟壑
+        surface='white',  # type of surface
         views='lateral',
         colormap='mne'
     )
@@ -108,7 +108,7 @@ def inverse_solution(eeg_path, fname_fwd, inverse_method="dSPM", snr=3.0, hemi="
     colors = ['b', 'g', 'r', 'c', 'm', 'y', 'k', 'orange', 'purple', 'brown']
 
     for i in range(10):
-        ax.plot(stc.times, data[:, i] + i * 3, color=colors[i])  # 偏移每个通道以便可视化
+        ax.plot(stc.times, data[:, i] + i * 3, color=colors[i])  # Shift each channel for visualization
 
     ax.plot(stc.times, peak_stc_lh + 30, color='cornflowerblue', label='lh')
     ax.plot(stc.times, peak_stc_rh + 33, color='firebrick', label='rh')

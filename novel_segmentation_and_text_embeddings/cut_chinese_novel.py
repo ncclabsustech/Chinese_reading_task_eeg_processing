@@ -10,7 +10,7 @@ This is used for novel segmentation and format transformation for the Chinese no
 '''
 
 def delete_specific_element(str, element):
-    """删除字符串中特定的元素"""
+    """Remove specific elements from a string"""
     segments = re.split(element, str)
     segments = list(filter(lambda x:x != element, segments))
     result = ''.join(segments)
@@ -29,7 +29,7 @@ def contain_back_quotation(sentence):
 
 
 def merge_short_sentences(segments):
-    """将一个句子中被切分的过短的句子拼起来"""
+    """Concatenate overly short, split sentences in a sentence"""
     results = []
     results.append(segments[0])
     for i in range(1, len(segments)):
@@ -40,7 +40,7 @@ def merge_short_sentences(segments):
     return results
 
 def insert_element_to_str(str, element, index):
-    """将指定元素插入到字符串的指定位置"""
+    """Insert a specified element into a specified position in a string"""
     str_list = list(str)
     str_list.insert(index, element)
     result = ''.join(str_list)
@@ -48,7 +48,7 @@ def insert_element_to_str(str, element, index):
 
 
 def calculate_length_without_punctuation_and_indexes(sentence):
-    """计算一个句子中除标点以外的长度和所有非标点位置的坐标"""
+    """Calculate the length of a sentence excluding punctuation and the coordinates of all non-punctuation positions"""
     punctuations = ['\n', '。', '，', '！', '？', '：', '；', '“', '”', '、', '《', '》', '.', '（', '）', '…', '·']
     sentence_list = list(sentence)
     length_without_punctuation = 0
@@ -63,47 +63,47 @@ def calculate_length_without_punctuation_and_indexes(sentence):
 
 
 def cut_paragraph(paragraph):
-    """将文章切分完整的句子"""
-    # 先切分整句
+    """Split the article into complete sentences"""
+    # First split the entire sentence
     sentences = re.split(r"(。|！|？|”|；)", paragraph)
-    # 将单独的标点拼起来
+    # Piece together the separate punctuation marks.
     sentences = [''.join(i) for i in zip(sentences[0::2], sentences[1::2])]
 
-    # 将标点移到正确的位置
+    # Move the punctuation to the right place
     for i in range(len(sentences)):
         if sentences[i][0] in ['。', '！', '？', '”', '；']:
             sentences[i - 1] += sentences[i][0]
             sentences[i] = sentences[i][1:]
 
-    # 去除掉空字符串
+    # Remove empty str
     sentences = list(filter(lambda x:x != '', sentences))
     sentences = [i.strip() for i in sentences]
 
-    # 去除掉字符串中的\n
+    # Remove \n in str
     sentences = [delete_specific_element(i, '\n') for i in sentences]
 
-    # 去掉字符串中的空格
+    # Remove space in str
     sentences = [delete_specific_element(i, ' ') for i in sentences]
 
-    # 将双引号不在同一个字符串的重新拼回来
+    # Reassemble the double quotes that are not in the same string together
     results = []
     isOneSentence = False
     for i in range(len(sentences)):
-        # 前引号和后引号都有
+        # Both having the opening quotation mark and the closing quotation mark
         if contain_leading_quotation(sentences[i]) and contain_back_quotation(sentences[i]):
             results.append(sentences[i])
-        # 只有前引号，代表后面有句子要添加进来
+        # Only having opening quotation mark. Subsequent sentence should be added
         elif contain_leading_quotation(sentences[i]) and not contain_back_quotation(sentences[i]):
             results.append(sentences[i])
             isOneSentence = True
-        # 只有后引号，代表添加结束
+        # Only having closing quotation mark. Adding is finished
         elif contain_back_quotation(sentences[i]):
             results[-1] += sentences[i]
             isOneSentence = False
-        # 没有引号，且在引号中的句子
+        # No quotation, but surrounded by quotations
         elif isOneSentence == True:
             results[-1] += sentences[i]
-        # 没有引号，且没有在引号中的句子
+        # No quotation, and not surrounded by quotations
         else:
             results.append(sentences[i])
 
@@ -111,7 +111,7 @@ def cut_paragraph(paragraph):
 
 
 def cut_sentences(sentences):
-    """检查每个句子是否超过十个字，如果超过了，就按逗号划分开"""
+    """Check if each sentence exceeds ten words; if it does, split it at the commas"""
     results = []
     for i in range(len(sentences)):
         if len(sentences[i]) <= 10:
@@ -120,17 +120,17 @@ def cut_sentences(sentences):
             segments = re.split(r"(，|：)", sentences[i])
             segments.append("")
             #print(segments)
-            # 将单独的标点拼起来
+            # Piece together the separate punctuation marks.
 
             segments = [''.join(i) for i in zip(segments[0::2], segments[1::2])]
 
             #print(segments)
-            # 将标点移到正确的位置
+            # Move the punctuation to the right place
             for i in range(len(segments)):
                 if segments[i][0] in ['，', '：']:
                     segments[i - 1] += segments[i][0]
                     segments[i] = segments[i][1:]
-            # 去除掉空字符串
+            # Remove empty str
             segments = list(filter(lambda x: x != '', segments))
             segments = [k.strip() for k in segments]
             #print(segments)
@@ -142,11 +142,14 @@ def cut_sentences(sentences):
 
 
 def arrange_sentences_within_30_words(sentences):
-    """得到屏幕显示时每一帧的文字（每帧不超过30字）"""
+    """Obtain the text for each frame displayed on the screen
+    (no more than 30 words per frame)."""
     results = []
     results.append(sentences[0])
 
-    # 将短句按屏幕所能容纳的量整合起来，假定每一帧不超过30个字，且每行最多10个字
+    # Integrate the short sentences according to the capacity of the screen,
+    # assuming that each frame does not exceed 30 words and each line contains
+    # a maximum of 10 words
     for i in range(1, len(sentences)):
         length_wiithout_punctuation_last, _ = calculate_length_without_punctuation_and_indexes(results[-1])
         length_wiithout_punctuation_new, _ = calculate_length_without_punctuation_and_indexes(sentences[i])
@@ -161,7 +164,7 @@ def arrange_sentences_within_30_words(sentences):
         else:
             results.append(sentences[i])
 
-   # 将每一句话每十个字插入一个换行符
+   # Insert \n every ten words in each sentence
     for i in range(len(results)):
         sentence_length_without_punctuation, indexes_of_non_punctuation = calculate_length_without_punctuation_and_indexes(results[i])
         row_num = sentence_length_without_punctuation // 10
@@ -176,7 +179,7 @@ def arrange_sentences_within_30_words(sentences):
 
 
 def split_chapter_title(sentences):
-    """将每个章节的标题单独成句"""
+    """Make each chapter title into a separate sentence."""
     chapter_num = 0
     for i in range(len(sentences)):
         if sentences[i].find('Ch' + str(round(chapter_num))) != -1:
@@ -192,7 +195,8 @@ def split_chapter_title(sentences):
 
 
 def repeat_sentences(sentences):
-    """将句子按其除掉标点后的长度重复，方便在psychopy中高亮时换帧"""
+    """Copy the sentence as many times as its length after removing punctuation,
+    to facilitate frame switching when highlighting in PsychoPy."""
     results = []
     indexes = []
     punctuations = ['\n', '。', '，', '！', '？', '：', '；', '“', '”', '、', '《', '》', '.', '·']
@@ -215,7 +219,7 @@ def repeat_sentences(sentences):
 
 
 def split_row(sentences):
-    """将文字按psychopy中显示时的每一行分起来"""
+    """Divide the text according to each line as displayed in PsychoPy."""
     results = []
     for i in range(len(sentences)):
         sentence_list = sentences[i].split('\n')
@@ -223,7 +227,7 @@ def split_row(sentences):
         for j in range(len(sentence_list)):
             results.append(sentence_list[j])
 
-    # 将句首有标点的转移到上一句的最后
+    # Move the punctuation at the beginning of a sentence to the end of the previous sentence.
     punctuations = ['。', '，', '！', '？', '：', '；', '”', '、', '》', '.', '）', '…', '·']
     for i in range(len(results)):
         if results[i][0] in punctuations:
@@ -236,7 +240,8 @@ def split_row(sentences):
 
 
 def split_preface_main_content(sentences, divide_nums):
-    """将前言部分单独分离开，并将正文部分按章节划分成指定数量的部分"""
+    """Separate the preface section and divide the main text into a specified number
+    of parts according to the chapters."""
     # def get_breakpoints(n, m):
     #     if m <= 1 or n <= 0:
     #         return []
@@ -257,7 +262,7 @@ def split_preface_main_content(sentences, divide_nums):
         first_chapter_index = len(sentences)
 
     preface = sentences[:first_chapter_index]
-    preface = preface[1:]   # 去掉最开始的标号0
+    preface = preface[1:]   # Remove the mark 0 at the beginning
 
     main_content = sentences[first_chapter_index:]
 
@@ -287,7 +292,8 @@ def split_preface_main_content(sentences, divide_nums):
 
 
 def arrange_sentences_in_psychopy_requirement(sentences):
-    """需要高亮的行在中间，上下各有一行作为背景"""
+    """The line that needs to be highlighted is in the middle,
+    with one line above and one below it as background"""
     results = []
     indexes = []
     main_row = []
@@ -393,7 +399,7 @@ if __name__ == '__main__':
         result = split_row(result)
 
 
-        # 存psychopy需要用到的
+        # To be saved for use with PsychoPy
         preface, main_content_parts = split_preface_main_content(result, args.divide_nums)
 
         preface_text, preface_indexes, preface_main_row, preface_row_num = arrange_sentences_in_psychopy_requirement(
@@ -409,7 +415,7 @@ if __name__ == '__main__':
 
 
 
-        # 存用于检索的
+        # To be saved for retrieval
 
         result_without_punc = []
         for row in result:

@@ -13,10 +13,10 @@ def read_eeg_brainvision(eeg_path, montage_name='GSN-HydroCel-128'):
     events_path = eeg_path.replace('eeg.vhdr', 'events.tsv')
 
     with open(events_path) as events_file:
-        csv_reader = csv.reader(events_file, delimiter='\t')  # 使用csv.reader读取csvfile中的文件
-        header = next(csv_reader)        # 读取第一行每一列的标题
-        for row in csv_reader:  # 将csv 文件中的数据保存到data中
-            events.append([int(row[4]), 0, int(row[3])])  # 选择某一列加入到data数组中
+        csv_reader = csv.reader(events_file, delimiter='\t')  # use csv.reader to read file
+        header = next(csv_reader)        # read the titles in the first row
+        for row in csv_reader:  # save data
+            events.append([int(row[4]), 0, int(row[3])])  # select a column and add to data
             if row[2] not in event_id.keys():
                 event_id[row[2]] = int(row[3])
 

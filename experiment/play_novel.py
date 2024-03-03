@@ -47,7 +47,7 @@ Logging.basicConfig(level=Logging.INFO)
 
 
 def calculate_length_without_punctuation_and_indexes(sentence):
-    """计算一个句子中除标点以外的长度和所有非标点位置的坐标"""
+    """Calculate the length of a sentence excluding punctuation and the coordinates of all non-punctuation positions"""
     punctuations = ['\n', '。', '，', '！', '？', '：', '；', '“', '”', '、', '《', '》', '.', '（', '）', '…', '·']
     sentence_list = list(sentence)
     length_without_punctuation = 0
