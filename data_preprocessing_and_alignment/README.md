@@ -7,7 +7,7 @@ Additonally. we provide code to align EEG data, texts and text embeddings.
 ## Data Pre-processing Pipeline
 Here, we pre-process our data to remove obvious artifact to the least extent. An overview of our pre-processing pipeline is shown in the figure below.
 
-![](https://github.com/ncclabsustech/Chinese_reading_task_eeg_processing/blob/main/image/processing pipeline.png)
+![](https://github.com/ncclabsustech/Chinese_reading_task_eeg_processing/blob/main/image/processing_pipeline.png)
 
 Our processing procedure includes these steps:
 
