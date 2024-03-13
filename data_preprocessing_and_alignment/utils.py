@@ -22,7 +22,11 @@ def read_eeg_brainvision(eeg_path, montage_name='GSN-HydroCel-128'):
 
     events = np.array(events)
 
+    annotations = mne.annotations_from_events(events, eeg.info['sfreq'], event_id)
+    eeg.set_annotations(annotations)
+
     montage = mne.channels.make_standard_montage(montage_name)
     eeg.set_montage(montage)
+
 
     return eeg, events, event_id

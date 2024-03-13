@@ -4,10 +4,12 @@ This document illustrates the pipeline of our EEG pre-processing and how to use 
 
 Additonally. we provide code to align EEG data, texts and text embeddings.
 
-We upload a folder called `example_bids_dataset` in `data` folder, which shows the structure of our dataset, which follows the BIDS standard format.
-
 ## Data Pre-processing Pipeline
-Here, we pre-process our data to remove obvious artifact to the least extent. Our processing procedure includes these steps:
+Here, we pre-process our data to remove obvious artifact to the least extent. An overview of our pre-processing pipeline is shown in the figure below.
+
+![](https://github.com/ncclabsustech/Chinese_reading_task_eeg_processing/blob/main/image/processing pipeline.png)
+
+Our processing procedure includes these steps:
 
 #### Data Segmentation
 
@@ -89,63 +91,15 @@ The detailed information about the parameters are shown below:
 
 ## Dataset 
 
-### Equipment
+You can access our dataset via Openneuro platform (https://openneuro.org/datasets/ds004952) or via the ChineseNeuro Symphony community (CHNNeuro) in the Science Data Bank (ScienceDB) platform (https://doi.org/10.57760/sciencedb.CHNNeuro.00007).
 
-We use the following device in our experiment:
+Our data is formatted under the requirement of the BIDS standard format as shown in the figure below. 
 
-EGI: 128-channel (montage: GSN-HydroCel-128)
-
-eyetracker: Tobii Glass 3
-
-### Description
-
-Our dataset consists of three main parts. The first part is the raw EEG data. The second part is the pre-processed data, which is in the derivative folder. The third part is our eyetracking record when recording the EEG signal.
-
-The data is formatted under the requirement of the BIDS standard format. The detailed format of our data structure is shown as follows:
+The detailed format of our data structure can be found in our paper at https://doi.org/10.1101/2024.02.08.579481.
 
 ![](https://github.com/ncclabsustech/Chinese_reading_task_eeg_processing/blob/main/image/structure_new.png)
 
-The dataset is organized following the EEG-BIDS specification, which is an extension to the brain imaging data structure for EEG. The repository contains two regular BIDS files, 10 participants' data folders and a derivatives folder. The stand-alone files offer an overview about the dataset: 
-
-i) `dataset_description.json` is a JSON file depicting the dataset, such as the objective, acquisition time, and location; 
-
-ii) `participants.tsv` contains participants' demographic information, such as age, sex, and handedness; 
-
-iii) `participants.json` describes the column attributes in `participants.tsv`. 
-
-Each participant's folder contains two folders named `ses-LittlePrince` and `ses-GranettDream`, which store the data of this participant reading two novels, respectively. Each of the two folders contains a folder `eeg` and one file `sub-xx_scans.tsv`. The TSV file contains information about the scanning time of each task. The `eeg` folder contains the source raw EEG data of several runs, channels and marker events files. The number of runs depends on how many parts the novel was divided into. Each run includes an `eeg.json` file, which encompasses detailed information for the respective run, such as the sampling rate and the number of channels. Events are stored in `events.tsv` with onset and event ID. The EEG data was converted from raw metafile format (`.mff` file) to BrainVisiondataset format (`.vhdr`}, `.vmrk` and `.eeg` files) using MNE package since EEG-BIDS is not officially compatible with the `.mff`} format.  All data was formatted to EEG-BIDS using the MNE-BIDS package in Python. 
-The `derivatives` folder contains three folders `filtered_0.5_80`, `preproc` and `eyetracking_data`. Their structure is consistent to participants' data folders in the root directory.
-The `filtered_0.5_80` folder contains data that has been processed up to the preprocessing step of 0.5-80Hz band-pass filtering. This data is suitable for researchers who have specific requirements and wish to perform customized processing on subsequent preprocessing steps like ICA and re-referencing. 
-The `preproc` folder contains minimally preprocessed EEG data mentioned in EEG data preprocessing section. It includes four additional types of files compared to the participants' data folders in the root directory. i) `bad_channels.json` contains bad channels marked during bad channel rejection phase. ii) `ica_components.npy` stores the values of all independent components in the ICA phase. iii) `ica_components.json` includes the Independent components excluded in ICA (the ICA random seed is fixed, allowing for reproducible results in each preprocessing session). 4) `ica_components_topography.png` is a topographic map of all independent components, where the excluded components are labeled in grey.
-Besides, the `eyetracker` folder contains the eyetracking data corresponding to each run in the `sub-xx` folder in the root directory. Each eyetracking data is formatted in a `.zip` folder with eye moving trajectories and other parameters like sampling rate saved in different files.
-
-
-
-In our experiment, In the "LittlePrince" session, "run-01" corresponds chapter 1-4;  "run-02" corresponds chapter 5-8;  "run-03" corresponds chapter 9-12;  "run-04" corresponds chapter 13-16;  "run-05" corresponds chapter 17-20;  "run-06" corresponds chapter 21-24;  "run-07" corresponds chapter 25-27. In the "GranettDream" session, each "run-N" corresponds to chapter N.
-
-our derivative data is pre-processed under these settings of the parameters:
-
-| Parameters                      | setting          |
-| ------------------------------- | ---------------- |
-| low_pass_freq (Hz)              | 0.5              |
-| high_pass_freq (Hz)             | 80               |
-| resample_freq (Hz)              | 256              |
-| remaining_time_at_beginning (s) | 10               |
-| montage_name                    | GSN-HydroCel-128 |
-| ica_method                      | infomax          |
-| ica_n_components                | 20               |
-| rereference                     | average          |
-
-### Processing Record 
-
-Here we have a detailed record of our processing of each eeg data **(just an example now !!!)**
-
-| subject | session | bad channels    | bad ICA components | bad segment ratio |
-| ------- | ------- | --------------- | ------------------ | ----------------- |
-| 06      | 1       | 17, 25, 48, 119 | 000, 004, 006      | 15%               |
-
-
-### Manual Processing Criteria
+## Manual Processing Criteria
 
 Example Name: subject_04_eeg_01
 
